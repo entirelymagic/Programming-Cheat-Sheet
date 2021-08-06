@@ -1,9 +1,23 @@
+# Content to make programming better and faster
 
-# Information to help programming faster and better. 
-## Include:
-* General information
-* GIT
-* Python 
-* SQL 
-* Web 
+- [Content to make programming better and faster](#content-to-make-programming-better-and-faster)
+  - [Django](#django)
+  - [General information](#general-information)
+  - [GIT](#git)
+  - [Python](#python)
+  - [SQL](#sql)
+  - [Web](#web)
 
+## Django
+
+## General information
+
+## GIT
+
+## Python
+
+## SQL
+
+## Web
+
+##
