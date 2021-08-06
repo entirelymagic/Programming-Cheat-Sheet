@@ -2,6 +2,7 @@
 
 - [Content to make programming better and faster](#content-to-make-programming-better-and-faster)
   - [Django](#django)
+    - [](#)
   - [General information](#general-information)
   - [GIT](#git)
   - [Python](#python)
@@ -10,6 +11,7 @@
 
 ## Django
 
+### 
 ## General information
 
 ## GIT
