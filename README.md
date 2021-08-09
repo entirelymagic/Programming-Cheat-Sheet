@@ -1,41 +1,119 @@
-# Content to make programming better and faster
+> Make Programming Better
 
-- [Content to make programming better and faster](#content-to-make-programming-better-and-faster)
-  - [Django](#django)
-    - [Authentication](#authentication)
-    - [User registration](#user-registration)
-  - [General information](#general-information)
-  - [GIT](#git)
-    - [RE-clone](#re-clone)
-    - [Clean and reset](#clean-and-reset)
-    - [Clean](#clean)
-    - [Reset](#reset)
-  - [Python](#python)
-    - [Data Types](#data-types)
-      - [Text Type: `str`](#text-type-str)
-      - [Numeric Types: `int`, `float`, `complex`](#numeric-types-int-float-complex)
-      - [Sequence Types: `list`, `tuple`, `range`](#sequence-types-list-tuple-range)
-        - [List](#list)
-          - [Transform a nested list into a simple list](#transform-a-nested-list-into-a-simple-list)
-  - [Mapping Type: `dict`](#mapping-type-dict)
-  - [Set Types: `set`, `frozenset`](#set-types-set-frozenset)
-  - [Boolean Type: `bool`](#boolean-type-bool)
-  - [Binary Types: `bytes`, `bytearray`, `memoryview`](#binary-types-bytes-bytearray-memoryview)
-  - [Text Type: `str`](#text-type-str-1)
-  - [Numeric Types: `int`, `float`, `complex`](#numeric-types-int-float-complex-1)
-  - [Sequence Types: `list`, `tuple`, `range`](#sequence-types-list-tuple-range-1)
-    - [List](#list-1)
-      - [Transform a nested list into a simple list](#transform-a-nested-list-into-a-simple-list-1)
-  - [Mapping Type: `dict`](#mapping-type-dict-1)
-  - [Set Types: `set`, `frozenset`](#set-types-set-frozenset-1)
-  - [Boolean Type: `bool`](#boolean-type-bool-1)
-  - [Binary Types: `bytes`, `bytearray`, `memoryview`](#binary-types-bytes-bytearray-memoryview-1)
-  - [SQL](#sql)
-  - [Web](#web)
+- [1. General information](#1-general-information)
+- [2. GIT](#2-git)
+  - [2.1. RE-clone](#21-re-clone)
+  - [2.2. Clean and reset](#22-clean-and-reset)
+  - [2.3. Clean](#23-clean)
+  - [2.4. Reset](#24-reset)
+- [3. Python](#3-python)
+  - [3.1. Data Types](#31-data-types)
+    - [3.1.1. Text Type: `str`](#311-text-type-str)
+    - [3.1.2. Numeric Types: `int`, `float`, `complex`](#312-numeric-types-int-float-complex)
+    - [3.1.3. Sequence Types: `list`, `tuple`, `range`](#313-sequence-types-list-tuple-range)
+      - [3.1.3.1. List](#3131-list)
+        - [3.1.3.1.1. Transform a nested list into a simple list](#31311-transform-a-nested-list-into-a-simple-list)
+    - [3.1.4. Mapping Type: `dict`](#314-mapping-type-dict)
+    - [3.1.5. Set Types: `set`, `frozenset`](#315-set-types-set-frozenset)
+    - [3.1.6. Boolean Type: `bool`](#316-boolean-type-bool)
+    - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
+- [4. Django](#4-django)
+  - [4.1. Authentication](#41-authentication)
+  - [4.2. User registration](#42-user-registration)
+- [5. SQL](#5-sql)
+- [6. Web](#6-web)
 
-## Django
+# 1. General information
 
-### Authentication
+# 2. GIT
+
+## 2.1. RE-clone
+
+```bash
+GIT=$(git rev-parse --show-toplevel)
+cd $GIT/..
+rm -rf $GIT
+git clone ...
+```
+
+- ✅ Deletes local, non-pushed commits
+- ✅ Reverts changes you made to tracked files
+- ✅ Restores tracked files you deleted
+- ✅ Deletes files/dirs listed in .gitignore (like build files)
+- ✅ Deletes files/dirs that are not tracked and not in .gitignore
+- 😀 You won't forget this approach
+- 😔 Wastes bandwidth
+
+## 2.2. Clean and reset
+
+```bash
+git clean --force -d -x
+git reset --hard
+```
+
+- ❌ Deletes local, non-pushed commits
+- ✅ Reverts changes you made to tracked files
+- ✅ Restores tracked files you deleted
+- ✅ Deletes files/dirs listed in .gitignore (like build files)
+- ✅ Deletes files/dirs that are not tracked and not in .gitignore
+
+## 2.3. Clean
+
+```bash
+git clean --force -d -x
+```
+
+- ❌ Deletes local, non-pushed commits
+- ❌ Reverts changes you made to tracked files
+- ❌ Restores tracked files you deleted
+- ✅ Deletes files/dirs listed in .gitignore (like build files)
+- ✅ Deletes files/dirs that are not tracked and not in .gitignore
+
+## 2.4. Reset
+
+```bash
+git reset --hard
+```
+
+- ❌ Deletes local, non-pushed commits
+- ✅ Reverts changes you made to tracked files
+- ✅ Restores tracked files you deleted
+- ❌ Deletes files/dirs listed in .gitignore (like build files)
+- ❌ Deletes files/dirs that are not tracked and not in .gitignore
+
+# 3. Python
+
+## 3.1. Data Types
+
+### 3.1.1. Text Type: `str`
+
+### 3.1.2. Numeric Types: `int`, `float`, `complex`
+
+### 3.1.3. Sequence Types: `list`, `tuple`, `range`
+
+#### 3.1.3.1. List
+
+##### 3.1.3.1.1. Transform a nested list into a simple list
+
+```python
+from functools import reduce
+
+nested_list = [[1], [2], [3, 5, 6], [4, 3, 12, 33]]
+
+simple_list = reduce(lambda x,y: x+y, nested_list)
+```
+
+### 3.1.4. Mapping Type: `dict`
+
+### 3.1.5. Set Types: `set`, `frozenset`
+
+### 3.1.6. Boolean Type: `bool`
+
+### 3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`
+
+# 4. Django
+
+## 4.1. Authentication
 
 ```python
 ## Default Authentication
@@ -90,7 +168,7 @@ urlpatterns += [
 - There are also endpoints for password reset, which is located at: \
   <http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset>
 
-### User registration
+## 4.2. User registration
 
 ```python
 pipenv install django-allauth
@@ -118,122 +196,6 @@ urlpatterns += [
 - There is now a user registration endpoint at \
   <http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/>.
 
-## General information
+# 5. SQL
 
-## GIT
-
-### RE-clone
-
-```bash
-GIT=$(git rev-parse --show-toplevel)
-cd $GIT/..
-rm -rf $GIT
-git clone ...
-```
-
-- ✅ Deletes local, non-pushed commits
-- ✅ Reverts changes you made to tracked files
-- ✅ Restores tracked files you deleted
-- ✅ Deletes files/dirs listed in .gitignore (like build files)
-- ✅ Deletes files/dirs that are not tracked and not in .gitignore
-- 😀 You won't forget this approach
-- 😔 Wastes bandwidth
-
-### Clean and reset
-
-```bash
-git clean --force -d -x
-git reset --hard
-```
-
-- ❌ Deletes local, non-pushed commits
-- ✅ Reverts changes you made to tracked files
-- ✅ Restores tracked files you deleted
-- ✅ Deletes files/dirs listed in .gitignore (like build files)
-- ✅ Deletes files/dirs that are not tracked and not in .gitignore
-
-### Clean
-
-```bash
-git clean --force -d -x
-```
-
-- ❌ Deletes local, non-pushed commits
-- ❌ Reverts changes you made to tracked files
-- ❌ Restores tracked files you deleted
-- ✅ Deletes files/dirs listed in .gitignore (like build files)
-- ✅ Deletes files/dirs that are not tracked and not in .gitignore
-
-### Reset
-
-```bash
-git reset --hard
-```
-
-- ❌ Deletes local, non-pushed commits
-- ✅ Reverts changes you made to tracked files
-- ✅ Restores tracked files you deleted
-- ❌ Deletes files/dirs listed in .gitignore (like build files)
-- ❌ Deletes files/dirs that are not tracked and not in .gitignore
-
-## Python
-
-### Data Types
-
-#### Text Type: `str`
-
-#### Numeric Types: `int`, `float`, `complex`
-
-#### Sequence Types: `list`, `tuple`, `range`
-
-##### List
-
-###### Transform a nested list into a simple list
-
-```python
-from functools import reduce
-
-nested_list = [[1], [2], [3, 5, 6], [4, 3, 12, 33]]
-
-simple_list = reduce(lambda x,y: x+y, nested_list)
-```
-
-## Mapping Type: `dict`
-
-## Set Types: `set`, `frozenset`
-
-## Boolean Type: `bool`
-
-## Binary Types: `bytes`, `bytearray`, `memoryview`
-
-## Text Type: `str`
-
-## Numeric Types: `int`, `float`, `complex`
-
-## Sequence Types: `list`, `tuple`, `range`
-
-### List
-
-#### Transform a nested list into a simple list
-
-```python
-from functools import reduce
-
-nested_list = [[1], [2], [3, 5, 6], [4, 3, 12, 33]]
-
-simple_list = reduce(lambda x,y: x+y, nested_list)
-```
-
-## Mapping Type: `dict`
-
-## Set Types: `set`, `frozenset`
-
-## Boolean Type: `bool`
-
-## Binary Types: `bytes`, `bytearray`, `memoryview`
-
-## SQL
-
-## Web
-
-##
+# 6. Web
