@@ -87,6 +87,67 @@
   - [4.2. User registration](#42-user-registration)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
+- [7. Operating Systems](#7-operating-systems)
+  - [7.1. Linux](#71-linux)
+    - [7.1.1. Files and Navigating](#711-files-and-navigating)
+      - [7.1.1.1. Directory listening](#7111-directory-listening)
+      - [7.1.1.2. Formatted listening](#7112-formatted-listening)
+      - [7.1.1.3. Formatted listening including hidden files](#7113-formatted-listening-including-hidden-files)
+      - [7.1.1.4. Change directory](#7114-change-directory)
+      - [7.1.1.5. Change to parent directory](#7115-change-to-parent-directory)
+      - [7.1.1.6. Show the path where actually you are](#7116-show-the-path-where-actually-you-are)
+      - [7.1.1.7. Create a directory](#7117-create-a-directory)
+      - [7.1.1.8. Remove directory](#7118-remove-directory)
+      - [7.1.1.9. Force remove](#7119-force-remove)
+      - [7.1.1.10. file](#71110-file)
+      - [7.1.1.11. Rename or moove file](#71111-rename-or-moove-file)
+      - [7.1.1.12. Create file](#71112-create-file)
+      - [7.1.1.13. Output contents of file](#71113-output-contents-of-file)
+      - [7.1.1.14. Write standart input into file](#71114-write-standart-input-into-file)
+      - [7.1.1.15. Append standart input into file](#71115-append-standart-input-into-file)
+      - [7.1.1.16. Output contents of file it grows](#71116-output-contents-of-file-it-grows)
+    - [7.1.2. Networking](#712-networking)
+      - [7.1.2.1. Ping host](#7121-ping-host)
+      - [7.1.2.2. Show the actually routing table](#7122-show-the-actually-routing-table)
+      - [7.1.2.3. Check your iptable's rules](#7123-check-your-iptables-rules)
+      - [7.1.2.4. List all ports](#7124-list-all-ports)
+      - [7.1.2.5. Got whois for domain](#7125-got-whois-for-domain)
+      - [7.1.2.6. Get DNS for domain](#7126-get-dns-for-domain)
+      - [7.1.2.7. Reserve lookup host](#7127-reserve-lookup-host)
+      - [7.1.2.8. Download file](#7128-download-file)
+      - [7.1.2.9. Recurively download files from url](#7129-recurively-download-files-from-url)
+      - [7.1.2.10. Outputs the webpage from url](#71210-outputs-the-webpage-from-url)
+      - [7.1.2.11. Connect to host as user](#71211-connect-to-host-as-user)
+      - [7.1.2.12. Connect using port](#71212-connect-using-port)
+      - [7.1.2.13. Connect and use bind port](#71213-connect-and-use-bind-port)
+    - [7.1.3. Processes](#713-processes)
+      - [7.1.3.1. Display currently active processes](#7131-display-currently-active-processes)
+      - [7.1.3.2. Detailed outputs](#7132-detailed-outputs)
+      - [7.1.3.3. Kill process with process id (pid)](#7133-kill-process-with-process-id-pid)
+      - [7.1.3.4. Kill all processes named proc](#7134-kill-all-processes-named-proc)
+    - [7.1.4. System Info](#714-system-info)
+      - [7.1.4.1. Show current date/time](#7141-show-current-datetime)
+      - [7.1.4.2. Show uptime](#7142-show-uptime)
+      - [7.1.4.3. Who you're logged in as](#7143-who-youre-logged-in-as)
+      - [7.1.4.4. Display who is online](#7144-display-who-is-online)
+      - [7.1.4.5. Memory info](#7145-memory-info)
+      - [7.1.4.6. Show memory and swap usage](#7146-show-memory-and-swap-usage)
+      - [7.1.4.7. Show directory space usage](#7147-show-directory-space-usage)
+      - [7.1.4.8. Displays readable size in GB](#7148-displays-readable-size-in-gb)
+      - [7.1.4.9. Show disk usage](#7149-show-disk-usage)
+      - [7.1.4.10. Show karnel config](#71410-show-karnel-config)
+    - [7.1.5. Compressing](#715-compressing)
+      - [7.1.5.1. Tar files into file.tar](#7151-tar-files-into-filetar)
+      - [7.1.5.2. Untar into current directory](#7152-untar-into-current-directory)
+      - [7.1.5.3. Show contents of archive](#7153-show-contents-of-archive)
+    - [7.1.6. Permissions](#716-permissions)
+      - [7.1.6.1. Change permissions of file](#7161-change-permissions-of-file)
+    - [7.1.7. Others](#717-others)
+      - [7.1.7.1. Search in files for pattern](#7171-search-in-files-for-pattern)
+      - [7.1.7.2. Search for pattern recursively in dir](#7172-search-for-pattern-recursively-in-dir)
+      - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
+      - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
+- [8. Resources](#8-resources)
 
 # 1. General information
 
@@ -515,3 +576,264 @@ urlpatterns += [
 # 5. SQL
 
 # 6. Web
+
+# 7. Operating Systems
+
+## 7.1. Linux
+
+### 7.1.1. Files and Navigating
+
+#### 7.1.1.1. Directory listening
+
+`ls`
+
+#### 7.1.1.2. Formatted listening
+
+`ls -l`
+
+#### 7.1.1.3. Formatted listening including hidden files
+
+`ls -la`
+
+#### 7.1.1.4. Change directory
+
+`cd`
+
+#### 7.1.1.5. Change to parent directory
+
+`cd..`
+
+#### 7.1.1.6. Show the path where actually you are
+
+`pwd`
+
+#### 7.1.1.7. Create a directory
+
+`mkdir`
+
+#### 7.1.1.8. Remove directory
+
+`rm -r`
+
+#### 7.1.1.9. Force remove
+
+`rm -f`
+
+#### 7.1.1.10. file
+
+`cp`
+
+#### 7.1.1.11. Rename or moove file
+
+`mv`
+
+#### 7.1.1.12. Create file
+
+`touch file`
+
+#### 7.1.1.13. Output contents of file
+
+`cat [file]`
+
+#### 7.1.1.14. Write standart input into file
+
+`cat > [file]`
+
+#### 7.1.1.15. Append standart input into file
+
+`cat >> [file]`
+
+#### 7.1.1.16. Output contents of file it grows
+
+`tail -f [file]`
+
+### 7.1.2. Networking
+
+#### 7.1.2.1. Ping host
+
+`ping [host]`
+
+#### 7.1.2.2. Show the actually routing table
+
+`route -n`
+
+#### 7.1.2.3. Check your iptable's rules
+
+`iptables -L`
+
+#### 7.1.2.4. List all ports
+
+`netstat -a`
+
+#### 7.1.2.5. Got whois for domain
+
+`whois [domain]`
+
+#### 7.1.2.6. Get DNS for domain
+
+`dig [domain]`
+
+#### 7.1.2.7. Reserve lookup host
+
+`dig -x [host]`
+
+#### 7.1.2.8. Download file
+
+`wget [file]`
+
+#### 7.1.2.9. Recurively download files from url
+
+`wget -r [url]`
+
+#### 7.1.2.10. Outputs the webpage from url
+
+`curl [url]`
+
+#### 7.1.2.11. Connect to host as user
+
+`ssh user@host`
+
+#### 7.1.2.12. Connect using port
+
+`ssh -p [port] user@host`
+
+#### 7.1.2.13. Connect and use bind port
+
+`ssh -D user@host`
+
+### 7.1.3. Processes
+
+#### 7.1.3.1. Display currently active processes
+
+`ps`
+
+#### 7.1.3.2. Detailed outputs
+
+`ps -aux`
+
+#### 7.1.3.3. Kill process with process id (pid)
+
+`kill [pid]`
+
+#### 7.1.3.4. Kill all processes named proc
+
+`killall proc`
+
+### 7.1.4. System Info
+
+#### 7.1.4.1. Show current date/time
+
+`date`
+
+#### 7.1.4.2. Show uptime
+
+`uptime`
+
+#### 7.1.4.3. Who you're logged in as
+
+`whoami`
+
+#### 7.1.4.4. Display who is online
+
+`w`
+
+Display cpu info
+
+`cat /proc/cpuinfo`
+
+#### 7.1.4.5. Memory info
+
+`cat /proc/meminfo`
+
+#### 7.1.4.6. Show memory and swap usage
+
+`free`
+
+#### 7.1.4.7. Show directory space usage
+
+`du`
+
+#### 7.1.4.8. Displays readable size in GB
+
+`du -sh`
+
+#### 7.1.4.9. Show disk usage
+
+`df`
+
+#### 7.1.4.10. Show karnel config
+
+`uname -a`
+
+### 7.1.5. Compressing
+
+#### 7.1.5.1. Tar files into file.tar
+
+`tar -cf [file.tar] [files]`
+
+#### 7.1.5.2. Untar into current directory
+
+`tar -xf [file.tar]`
+
+#### 7.1.5.3. Show contents of archive
+
+Show contents of archive
+Options :
+
+- c - create archive
+-
+- t - table of contents
+-
+- x - extract
+-
+- z - use zip/gzip
+-
+- f - specify filename
+-
+- k - do not overwrite
+-
+- v - verbose
+
+### 7.1.6. Permissions
+
+#### 7.1.6.1. Change permissions of file
+
+`chmod [rights] [file]`
+
+4 - read(r)
+
+2 - write(w)
+
+1 - execute(x)
+
+> order : owner / group / world
+
+`chmod 777` - rwx for everyone
+
+`chmod 755` - rw for owner, rx for group and world
+
+### 7.1.7. Others
+
+#### 7.1.7.1. Search in files for pattern
+
+`grep '[pattern]' [files]`
+
+#### 7.1.7.2. Search for pattern recursively in dir
+
+`grep -r '[pattern]' dir`
+
+#### 7.1.7.3. Find all instances of file
+
+`locate [file]`
+
+#### 7.1.7.4. Show possible locations of app
+
+`whereis [app]`
+
+# 8. Resources
+
+There will be added more resources in the future.
+
+- Linux Cheatsheet from Visual studio Code
+
+-
