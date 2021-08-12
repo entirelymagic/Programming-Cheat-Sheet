@@ -754,9 +754,10 @@ urlpatterns += [
 
 ```python
 class ARedirectApiView(APIView):
-  """ an example of APIView that can take optiona an argument
+  """ an example of APIView that take an optional parameter and redirect to the path provided"""
+
     def get(self, request, *args, **kwargs):
-        """Take an optional parameter and redirect to the path provided"""
+        """override get method for the APIView"""
         ean_code = self.request.query_params["ean_code"] # a random optional parameter
 
         if ean_code:
