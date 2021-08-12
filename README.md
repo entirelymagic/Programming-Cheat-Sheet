@@ -86,6 +86,9 @@
 - [4. Django](#4-django)
   - [4.1. Authentication](#41-authentication)
   - [4.2. User registration](#42-user-registration)
+  - [4.3. Views](#43-views)
+    - [4.3.1. API views](#431-api-views)
+      - [4.3.1.1. Redirect](#4311-redirect)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -148,7 +151,7 @@
       - [7.1.7.2. Search for pattern recursively in dir](#7172-search-for-pattern-recursively-in-dir)
       - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
       - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
-- [Resources](#resources)
+- [8. Resources](#8-resources)
 
   - [2.2. RE-clone](#22-re-clone)
   - [2.3. Clean and reset](#23-clean-and-reset)
@@ -240,6 +243,9 @@
 - [4. Django](#4-django)
   - [4.1. Authentication](#41-authentication)
   - [4.2. User registration](#42-user-registration)
+  - [4.3. Views](#43-views)
+    - [4.3.1. API views](#431-api-views)
+      - [4.3.1.1. Redirect](#4311-redirect)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -302,7 +308,7 @@
       - [7.1.7.2. Search for pattern recursively in dir](#7172-search-for-pattern-recursively-in-dir)
       - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
       - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
-- [Resources](#resources)
+- [8. Resources](#8-resources)
 
 # 1. General information
 
@@ -740,6 +746,31 @@ urlpatterns += [
 - There is now a user registration endpoint at  F
   <http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/>.
 
+## 4.3. Views
+
+### 4.3.1. API views
+
+#### 4.3.1.1. Redirect
+
+```python
+class ARedirectApiView(APIView):
+  """ an example of APIView that can take optiona an argument
+    def get(self, request, *args, **kwargs):
+        """Take an optional parameter and redirect to the path provided"""
+        ean_code = self.request.query_params["ean_code"] # a random optional parameter
+
+        if ean_code:
+            image_location_in_media = "test.jpeg"
+        else:
+            image_location_in_media = "default_image.jpeg"
+            
+        host = request.get_host() # host is the domain name
+        redirect_path = f"http://{host}/media/{image_location_in_media}"
+        return HttpResponseRedirect(redirect_to=redirect_path)
+       
+
+```
+
 # 5. SQL
 
 # 6. Web
@@ -997,7 +1028,7 @@ Options :
 
 `whereis [app]`
 
-# Resources
+# 8. Resources
 
 There will be added more resources in the future.
 
