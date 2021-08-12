@@ -64,6 +64,7 @@
       - [2.1.10.1. Set the username](#21101-set-the-username)
       - [2.1.10.2. Set the user email](#21102-set-the-user-email)
       - [2.1.10.3. Set automatic command line coloring](#21103-set-automatic-command-line-coloring)
+
   - [2.2. RE-clone](#22-re-clone)
   - [2.3. Clean and reset](#23-clean-and-reset)
   - [2.4. Clean](#24-clean)
@@ -156,6 +157,7 @@
 ## 2.1. Cheat sheet
 
 ### 2.1.1. Local Changes
+
 
 #### 2.1.1.1. Display the status of modified files
 
@@ -376,6 +378,7 @@
 `git config --global user.email "user_email"`
 
 #### 2.1.10.3. Set automatic command line coloring
+
 
 `git config --global color.ui auto`
 
