@@ -1,4 +1,8 @@
-> Make Programming Better
+> Make Programming Better  
+> Covered in some detail so far:
+>
+> - GIT
+> - Linux
 
 - [1. General information](#1-general-information)
 - [2. GIT](#2-git)
