@@ -17,6 +17,9 @@
     - [3.1.5. Set Types: `set`, `frozenset`](#315-set-types-set-frozenset)
     - [3.1.6. Boolean Type: `bool`](#316-boolean-type-bool)
     - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
+  - [3.2. Generators](#32-generators)
+    - [3.2.1. EAN generators](#321-ean-generators)
+    - [3.2.2 XLSX Generators](#322-xlsx-generators)
 - [4. Django](#4-django)
   - [4.1. Authentication](#41-authentication)
   - [4.2. User registration](#42-user-registration)
@@ -111,6 +114,31 @@ simple_list = reduce(lambda x,y: x+y, nested_list)
 
 ### 3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`
 
+## 3.2. Generators
+
+### 3.2.1. EAN generators
+
+Generate EAN 13 barcodes for products.
+
+Formula used (5940000 + random_number + last digit validator)
+
+EAN country codes : <https://wholesgame.com/trade-info/ean-barcodes-country/>
+
+- Romania country code: 594
+Barcode number generation using faker:
+- <https://faker.readthedocs.io/en/master/providers/faker.providers.barcode.html>
+Barcode Image generation:
+- <https://python-barcode.readthedocs.io/en/stable/>
+- `python-barcode==0.13.1`
+
+### 3.2.2 XLSX Generators  
+
+- **XlsxWriter**8:  Only for generating NEW files.
+
+  `pip install XlsxWriter`
+
+  <https://xlsxwriter.readthedocs.io/index.html>
+
 # 4. Django
 
 ## 4.1. Authentication
@@ -193,7 +221,7 @@ urlpatterns += [
 ]
 ```
 
-- There is now a user registration endpoint at \
+- There is now a user registration endpoint at  F
   <http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/>.
 
 # 5. SQL
