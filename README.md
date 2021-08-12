@@ -2,10 +2,19 @@
 
 - [1. General information](#1-general-information)
 - [2. GIT](#2-git)
-  - [2.1. RE-clone](#21-re-clone)
-  - [2.2. Clean and reset](#22-clean-and-reset)
-  - [2.3. Clean](#23-clean)
-  - [2.4. Reset](#24-reset)
+  - [2.1. Cheat sheet](#21-cheat-sheet)
+    - [2.1.1. Local Changes](#211-local-changes)
+    - [2.1.2. Branches](#212-branches)
+    - [2.1.3. Commit History](#213-commit-history)
+    - [2.1.4. Rebase](#214-rebase)
+    - [2.1.5. Undo](#215-undo)
+    - [2.1.6. Tags](#216-tags)
+    - [2.1.7. Repository Setup](#217-repository-setup)
+    - [2.1.8. Global Config](#218-global-config)
+  - [2.2. RE-clone](#22-re-clone)
+  - [2.3. Clean and reset](#23-clean-and-reset)
+  - [2.4. Clean](#24-clean)
+  - [2.5. Reset](#25-reset)
 - [3. Python](#3-python)
   - [3.1. Data Types](#31-data-types)
     - [3.1.1. Text Type: `str`](#311-text-type-str)
@@ -19,7 +28,7 @@
     - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
   - [3.2. Generators](#32-generators)
     - [3.2.1. EAN generators](#321-ean-generators)
-    - [3.2.2 XLSX Generators](#322-xlsx-generators)
+    - [3.2.2. 3.2.2 XLSX Generators](#322-322-xlsx-generators)
 - [4. Django](#4-django)
   - [4.1. Authentication](#41-authentication)
   - [4.2. User registration](#42-user-registration)
@@ -30,7 +39,188 @@
 
 # 2. GIT
 
-## 2.1. RE-clone
+## 2.1. Cheat sheet
+
+### 2.1.1. Local Changes
+
+Display the status of modified files
+
+`git status`
+Add a file to staging as it looks right now
+
+`git add [file_name]`
+Add a folder to staging as it looks right now
+
+`git add [folder_name]`
+Commit staged files in a new commit
+
+`git commit -m "descriptive_message"`
+Add all files to staging and commit them at once
+
+`git commit -am "descriptive_message"`
+Unstage a file while retaining the changes
+
+`git reset [file_name]`
+Diff of what is changed but not staged
+
+`git diff`
+Diff of what has changed between staged changes and the last commit
+
+`git diff --staged`
+
+### 2.1.2. Branches
+
+List all branches. The current one is marked with *
+
+`git branch`
+Create a new branch
+
+`git branch [branch_name]`
+Switch to a branch
+
+`git checkout [branch_name]`
+Create a new branch and switch to it
+
+`git checkout -b [branch_name]`
+Switch to the previously checked out branch
+
+`git checkout -`
+Rename a branch
+
+`git checkout -m [new_branch]`
+Delete a branch, locally
+
+`git branch -d [branch_name]`
+Merge another branch into the current one
+
+`git merge [branch_name]`
+Working with a Remote Repository
+Fetch and merge all commits from the tracked remote branch
+
+`git pull`
+Fetch and merge all commits from a specific remote branch
+
+`git pull [alias] [branch_name]`
+Fetch recent changes from the tracked remote branch but don't merge them
+
+`git fetch`
+Push all local branch commits to the tracked remote branch
+
+`git push`
+Push all local branch commits to a specific remote branch
+
+`git push [alias] [branch_name]`
+Add a new remote repository with the given alias
+
+git remote add [alias] [repo_url]
+Display a list of remote repositories and their URLs
+
+`git remote -v`
+
+### 2.1.3. Commit History
+
+Show all commits in the current branch’s history
+
+`git log`
+Show all commits in the current branch’s history by printing each commit on a single line
+
+`git log --oneline`
+Show number of commits per author on all branches, excluding merge commits.
+
+`git shortlog -s -n --all --no-merges`
+Show number of commits per author on a branch, excluding merge commits.
+
+`git shortlog -s -n [branch_name] --no-merges`
+Show number of commits per author on all branches, including merge commits.
+
+`git shortlog -s -n --all`
+Show number of commits per author on a branch, including merge commits.
+
+`git shortlog -s -n [branch_name]`
+
+### 2.1.4. Rebase
+
+Reapply commits from the current branch on top of another base
+
+`git rebase [branch_name]`
+Abort a rebase
+
+`git rebase –-abort`
+Continue a rebase after resolving conflicts
+
+`git rebase –-continue`
+
+### 2.1.5. Undo
+
+Revert the changes in a commit and record them in a new commit
+
+`git revert [commit]`
+Reset to a previous commit and preserve the changes made since [commit] as unstaged
+
+`git reset [commit]`
+Reset to a previous commit and discard the changes made since the [commit]
+
+`git reset --hard [commit]`
+Stash
+Stash modified and staged changes
+
+`git stash`
+Stash modified and staged changes with a custom message
+
+`git stash push -m "message"`
+Stash a selected file by specifying a path
+
+`git stash push src/custom.css`
+List all stashed changesets
+
+`git stash list`
+Restore the most recently stashed changeset and delete it
+
+`git stash pop`
+Delete the most recently stashed changeset
+
+`git stash drop`
+
+### 2.1.6. Tags
+
+Create a new tag
+
+`git tag "tagname"`
+List all tags
+
+`git tag`
+Delete a tag
+
+`git tag -d "tagname"`
+
+### 2.1.7. Repository Setup
+
+Create an empty repository in the current folder
+
+`git init`
+Create an empty repository in a specific folder
+
+`git init [folder_name]`
+Clone a repository and add it to the current folder
+
+`git clone [repo_url]`
+Clone a repository to a specific folder
+
+`git clone [repo_url] [folder_name]`
+
+### 2.1.8. Global Config
+
+Set the username
+
+`git config --global user.name "user_name"`
+Set the user email
+
+`git config --global user.email "user_email"`
+Set automatic command line coloring
+
+`git config --global color.ui auto`
+
+## 2.2. RE-clone
 
 ```bash
 GIT=$(git rev-parse --show-toplevel)
@@ -47,7 +237,7 @@ git clone ...
 - 😀 You won't forget this approach
 - 😔 Wastes bandwidth
 
-## 2.2. Clean and reset
+## 2.3. Clean and reset
 
 ```bash
 git clean --force -d -x
@@ -60,7 +250,7 @@ git reset --hard
 - ✅ Deletes files/dirs listed in .gitignore (like build files)
 - ✅ Deletes files/dirs that are not tracked and not in .gitignore
 
-## 2.3. Clean
+## 2.4. Clean
 
 ```bash
 git clean --force -d -x
@@ -72,7 +262,7 @@ git clean --force -d -x
 - ✅ Deletes files/dirs listed in .gitignore (like build files)
 - ✅ Deletes files/dirs that are not tracked and not in .gitignore
 
-## 2.4. Reset
+## 2.5. Reset
 
 ```bash
 git reset --hard
@@ -131,7 +321,7 @@ Barcode Image generation:
 - <https://python-barcode.readthedocs.io/en/stable/>
 - `python-barcode==0.13.1`
 
-### 3.2.2 XLSX Generators  
+### 3.2.2. 3.2.2 XLSX Generators  
 
 - **XlsxWriter**8:  Only for generating NEW files.
 
