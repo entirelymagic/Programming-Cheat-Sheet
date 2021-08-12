@@ -80,7 +80,7 @@
     - [3.1.5. Set Types: `set`, `frozenset`](#315-set-types-set-frozenset)
     - [3.1.6. Boolean Type: `bool`](#316-boolean-type-bool)
     - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
-  - [3.2. Usefull Functions](#32-usefull-functions)
+  - [3.2. Useful Functions](#32-useful-functions)
     - [3.2.1. EAN generators](#321-ean-generators)
     - [3.2.2. 3.2.2 XLSX Generators](#322-322-xlsx-generators)
 - [4. Django](#4-django)
@@ -101,11 +101,11 @@
       - [7.1.1.8. Remove directory](#7118-remove-directory)
       - [7.1.1.9. Force remove](#7119-force-remove)
       - [7.1.1.10. file](#71110-file)
-      - [7.1.1.11. Rename or moove file](#71111-rename-or-moove-file)
+      - [7.1.1.11. Rename or move file](#71111-rename-or-move-file)
       - [7.1.1.12. Create file](#71112-create-file)
       - [7.1.1.13. Output contents of file](#71113-output-contents-of-file)
-      - [7.1.1.14. Write standart input into file](#71114-write-standart-input-into-file)
-      - [7.1.1.15. Append standart input into file](#71115-append-standart-input-into-file)
+      - [7.1.1.14. Write standard input into file](#71114-write-standard-input-into-file)
+      - [7.1.1.15. Append standard input into file](#71115-append-standard-input-into-file)
       - [7.1.1.16. Output contents of file it grows](#71116-output-contents-of-file-it-grows)
     - [7.1.2. Networking](#712-networking)
       - [7.1.2.1. Ping host](#7121-ping-host)
@@ -116,7 +116,7 @@
       - [7.1.2.6. Get DNS for domain](#7126-get-dns-for-domain)
       - [7.1.2.7. Reserve lookup host](#7127-reserve-lookup-host)
       - [7.1.2.8. Download file](#7128-download-file)
-      - [7.1.2.9. Recurively download files from url](#7129-recurively-download-files-from-url)
+      - [7.1.2.9. Recursively download files from url](#7129-recursively-download-files-from-url)
       - [7.1.2.10. Outputs the webpage from url](#71210-outputs-the-webpage-from-url)
       - [7.1.2.11. Connect to host as user](#71211-connect-to-host-as-user)
       - [7.1.2.12. Connect using port](#71212-connect-using-port)
@@ -136,7 +136,7 @@
       - [7.1.4.7. Show directory space usage](#7147-show-directory-space-usage)
       - [7.1.4.8. Displays readable size in GB](#7148-displays-readable-size-in-gb)
       - [7.1.4.9. Show disk usage](#7149-show-disk-usage)
-      - [7.1.4.10. Show karnel config](#71410-show-karnel-config)
+      - [7.1.4.10. Show kernel config](#71410-show-kernel-config)
     - [7.1.5. Compressing](#715-compressing)
       - [7.1.5.1. Tar files into file.tar](#7151-tar-files-into-filetar)
       - [7.1.5.2. Untar into current directory](#7152-untar-into-current-directory)
@@ -234,7 +234,7 @@
     - [3.1.5. Set Types: `set`, `frozenset`](#315-set-types-set-frozenset)
     - [3.1.6. Boolean Type: `bool`](#316-boolean-type-bool)
     - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
-  - [3.2. Usefull Functions](#32-usefull-functions)
+  - [3.2. Useful Functions](#32-useful-functions)
     - [3.2.1. EAN generators](#321-ean-generators)
     - [3.2.2. 3.2.2 XLSX Generators](#322-322-xlsx-generators)
 - [4. Django](#4-django)
@@ -255,11 +255,11 @@
       - [7.1.1.8. Remove directory](#7118-remove-directory)
       - [7.1.1.9. Force remove](#7119-force-remove)
       - [7.1.1.10. file](#71110-file)
-      - [7.1.1.11. Rename or moove file](#71111-rename-or-moove-file)
+      - [7.1.1.11. Rename or move file](#71111-rename-or-move-file)
       - [7.1.1.12. Create file](#71112-create-file)
       - [7.1.1.13. Output contents of file](#71113-output-contents-of-file)
-      - [7.1.1.14. Write standart input into file](#71114-write-standart-input-into-file)
-      - [7.1.1.15. Append standart input into file](#71115-append-standart-input-into-file)
+      - [7.1.1.14. Write standard input into file](#71114-write-standard-input-into-file)
+      - [7.1.1.15. Append standard input into file](#71115-append-standard-input-into-file)
       - [7.1.1.16. Output contents of file it grows](#71116-output-contents-of-file-it-grows)
     - [7.1.2. Networking](#712-networking)
       - [7.1.2.1. Ping host](#7121-ping-host)
@@ -270,7 +270,7 @@
       - [7.1.2.6. Get DNS for domain](#7126-get-dns-for-domain)
       - [7.1.2.7. Reserve lookup host](#7127-reserve-lookup-host)
       - [7.1.2.8. Download file](#7128-download-file)
-      - [7.1.2.9. Recurively download files from url](#7129-recurively-download-files-from-url)
+      - [7.1.2.9. Recursively download files from url](#7129-recursively-download-files-from-url)
       - [7.1.2.10. Outputs the webpage from url](#71210-outputs-the-webpage-from-url)
       - [7.1.2.11. Connect to host as user](#71211-connect-to-host-as-user)
       - [7.1.2.12. Connect using port](#71212-connect-using-port)
@@ -290,7 +290,7 @@
       - [7.1.4.7. Show directory space usage](#7147-show-directory-space-usage)
       - [7.1.4.8. Displays readable size in GB](#7148-displays-readable-size-in-gb)
       - [7.1.4.9. Show disk usage](#7149-show-disk-usage)
-      - [7.1.4.10. Show karnel config](#71410-show-karnel-config)
+      - [7.1.4.10. Show kernel config](#71410-show-kernel-config)
     - [7.1.5. Compressing](#715-compressing)
       - [7.1.5.1. Tar files into file.tar](#7151-tar-files-into-filetar)
       - [7.1.5.2. Untar into current directory](#7152-untar-into-current-directory)
@@ -630,11 +630,11 @@ simple_list = reduce(lambda x,y: x+y, nested_list)
 
 ### 3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`
 
-## 3.2. Usefull Functions
+## 3.2. Useful Functions
 
 ### 3.2.1. EAN generators
 
-Generate EAN 13 barcodes for products.
+Generate EAN 13 barcode for products.
 
 Formula used (5940000 + random_number + last digit validator)
 
@@ -790,7 +790,7 @@ urlpatterns += [
 
 `cp`
 
-#### 7.1.1.11. Rename or moove file
+#### 7.1.1.11. Rename or move file
 
 `mv`
 
@@ -802,11 +802,11 @@ urlpatterns += [
 
 `cat [file]`
 
-#### 7.1.1.14. Write standart input into file
+#### 7.1.1.14. Write standard input into file
 
 `cat > [file]`
 
-#### 7.1.1.15. Append standart input into file
+#### 7.1.1.15. Append standard input into file
 
 `cat >> [file]`
 
@@ -848,7 +848,7 @@ urlpatterns += [
 
 `wget [file]`
 
-#### 7.1.2.9. Recurively download files from url
+#### 7.1.2.9. Recursively download files from url
 
 `wget -r [url]`
 
@@ -928,7 +928,7 @@ Display cpu info
 
 `df`
 
-#### 7.1.4.10. Show karnel config
+#### 7.1.4.10. Show kernel config
 
 `uname -a`
 
