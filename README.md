@@ -5,6 +5,7 @@
 > - Linux
 
 - [1. General information](#1-general-information)
+  - [1.1. Create a VS Code Editor from web (press `.` o open when on main Repository page)](#11-create-a-vs-code-editor-from-web-press--o-open-when-on-main-repository-page)
 - [2. GIT](#2-git)
   - [2.1. Cheat sheet](#21-cheat-sheet)
     - [2.1.1. Local Changes](#211-local-changes)
@@ -157,10 +158,16 @@
       - [7.1.7.2. Search for pattern recursively in dir](#7172-search-for-pattern-recursively-in-dir)
       - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
       - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
-- [8. Resources](#8-resources)
+- [8. Editors](#8-editors)
+- [9. Resources](#9-resources)
 
 # 1. General information
 
+## 1.1. Create a VS Code Editor from web (press `.` o open when on main Repository page)
+**Bellow are example of how to create a vscode editor from web.
+IF you connect your account and synchronize it will load your settings.**
+![Open Online Editor](GIT/onlineEditor.png)
+![Editor example](GIT/editor_example.png)
 # 2. GIT
 
 ## 2.1. Cheat sheet
@@ -932,7 +939,9 @@ Options :
 
 `whereis [app]`
 
-# 8. Resources
+# 8. Editors
+
+# 9. Resources
 
 There will be added more resources in the future.
 
