@@ -1,8 +1,12 @@
-> Make Programming BetterCovered in some detail so far:
+
+> Partially covered:
 >
+> - Django
+> - Python
+> - Docker
 > - GIT
 > - Linux
-
+>
 - [1. General information](#1-general-information)
   - [1.1. Create a VS Code Editor from web (press `.` o open when on main Repository page)](#11-create-a-vs-code-editor-from-web-press--o-open-when-on-main-repository-page)
 - [2. GIT](#2-git)
@@ -1065,4 +1069,4 @@ In the container, you start the jupyter notebook server.
 
   - [https://docs.docker.com/samples/django/](https://docs.docker.com/samples/django/)
 
-[https://docs.docker.com/samples/django/](https://docs.docker.com/samples/django/)
+  - <https://hub.docker.com/r/civisanalytics/datascience-python>
