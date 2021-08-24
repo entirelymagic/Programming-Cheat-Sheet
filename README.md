@@ -162,7 +162,9 @@
       - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
       - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
 - [8. Editors](#8-editors)
-- [9. Resources](#9-resources)
+- [9. Docker](#9-docker)
+  - [9.1. Docker for Data Science](#91-docker-for-data-science)
+- [10. Resources](#10-resources)
 
 # 1. General information
 
@@ -1032,7 +1034,26 @@ Options :
 
 # 8. Editors
 
-# 9. Resources
+# 9. Docker
+
+## 9.1. Docker for Data Science
+
+Found this image that is a good starting point for data science projects:
+You need docker allready installed on the machine.
+
+<https://hub.docker.com/r/civisanalytics/datascience-python>
+
+1. `docker pull civisanalytics/datascience-python`
+2. `docker run -p 8888:8888 -i -t civisanalytics/datascience-python:latest /bin/bash`
+In the container, you start the jupyter notebook server.
+3. `jupyter notebook --ip 0.0.0.0 --no-browser --allow-root`
+4. Access the notebook server at <http://localhost:8888/>  The exact link including the token is shown in the terminal.
+
+ !To add a folder to the notebook server you can use the following command:
+ `docker run -p 8888:8888 -i -t -v /Users/elvismunteanu/elvism/DataScience:/elvism civisanalytics/datascience-python:latest /bin/bash`
+ The command added to second step is `-v <Your folder location>:<Folder name and location from the Docker container to pass it in>`
+
+# 10. Resources
 
 - There will be added more resources in the future.
 - Linux Cheatsheet from Visual studio Code
