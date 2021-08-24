@@ -168,6 +168,10 @@
 - [8. Editors](#8-editors)
 - [9. Docker](#9-docker)
   - [9.1. Docker for Data Science](#91-docker-for-data-science)
+  - [9.2. Cheat Sheet](#92-cheat-sheet)
+    - [9.2.1. To stop all Docker containers, simply run the following command in your terminal](#921-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
+    - [9.2.2. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#922-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
+    - [9.2.3. To remove all Docker images, run this command](#923-to-remove-all-docker-images-run-this-command)
 - [10. Resources](#10-resources)
 
 # 1. General information
@@ -1060,6 +1064,20 @@ In the container, you start the jupyter notebook server.
  !To add a folder to the notebook server you can use the following command:
  `docker run -p 8888:8888 -i -t -v /Users/elvismunteanu/elvism/DataScience:/elvism civisanalytics/datascience-python:latest /bin/bash`
  The command added to second step is `-v <Your folder location>:<Folder name and location from the Docker container to pass it in>`
+
+## 9.2. Cheat Sheet
+
+### 9.2.1. To stop all Docker containers, simply run the following command in your terminal
+
+`docker kill $(docker ps -q)`
+
+### 9.2.2. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command
+
+`docker rm $(docker ps -a -q)`
+
+### 9.2.3. To remove all Docker images, run this command
+
+`docker rmi $(docker images -q)`
 
 # 10. Resources
 
