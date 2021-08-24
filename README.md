@@ -1,5 +1,4 @@
-> Make Programming Better  
-> Covered in some detail so far:
+> Make Programming BetterCovered in some detail so far:
 >
 > - GIT
 > - Linux
@@ -96,6 +95,9 @@
       - [4.3.1.1. Redirect](#4311-redirect)
   - [4.4. Django Testing](#44-django-testing)
     - [4.4.1. Coverage](#441-coverage)
+  - [4.5. Django 3.1 Async](#45-django-31-async)
+  - [4.6. Using with Docker](#46-using-with-docker)
+    - [4.6.1. Create a project inside a docker container using docker-compose](#461-create-a-project-inside-a-docker-container-using-docker-compose)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -159,15 +161,19 @@
       - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
       - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
 - [8. Editors](#8-editors)
-- [9. Resources](#9-resources)
+- [9. Docker](#9-docker)
+  - [9.1. List running containers](#91-list-running-containers)
+- [10. Resources](#10-resources)
 
 # 1. General information
 
 ## 1.1. Create a VS Code Editor from web (press `.` o open when on main Repository page)
+
 **Bellow are example of how to create a vscode editor from web.
 IF you connect your account and synchronize it will load your settings.**
 ![Open Online Editor](GIT/onlineEditor.png)
 ![Editor example](GIT/editor_example.png)
+
 # 2. GIT
 
 ## 2.1. Cheat sheet
@@ -500,22 +506,22 @@ Generate EAN 13 barcode for products.
 
 Formula used (5940000 + random_number + last digit validator)
 
-EAN country codes : <https://wholesgame.com/trade-info/ean-barcodes-country/>
+EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](https://wholesgame.com/trade-info/ean-barcodes-country/)
 
 - Romania country code: 594
-Barcode number generation using faker:
-- <https://faker.readthedocs.io/en/master/providers/faker.providers.barcode.html>
-Barcode Image generation:
-- <https://python-barcode.readthedocs.io/en/stable/>
+  Barcode number generation using faker:
+- [https://faker.readthedocs.io/en/master/providers/faker.providers.barcode.html](https://faker.readthedocs.io/en/master/providers/faker.providers.barcode.html)
+  Barcode Image generation:
+- [https://python-barcode.readthedocs.io/en/stable/](https://python-barcode.readthedocs.io/en/stable/)
 - `python-barcode==0.13.1`
 
-### 3.2.2. 3.2.2 XLSX Generators  
+### 3.2.2. 3.2.2 XLSX Generators
 
 - **XlsxWriter**8:  Only for generating NEW files.
 
   `pip install XlsxWriter`
 
-  <https://xlsxwriter.readthedocs.io/index.html>
+  [https://xlsxwriter.readthedocs.io/index.html](https://xlsxwriter.readthedocs.io/index.html)
 
 # 4. Django
 
@@ -564,15 +570,12 @@ urlpatterns += [
 ]
 ```
 
-- We have a working log in endpoint at <http://127.0.0.1:8000/api/v1/dj-rest-auth/login/>.
-- And a log out endpoint at <http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/>.
-
-- There are also endpoints for password reset, which is located at: \
-<http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset>
-- We have a working log in endpoint at <http://127.0.0.1:8000/api/v1/dj-rest-auth/login/>.-  
-- And a log out endpoint at <http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/>.-  
-- There are also endpoints for password reset, which is located at: \
-  <http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset>
+- We have a working log in endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/login/](http://127.0.0.1:8000/api/v1/dj-rest-auth/login/).
+- And a log out endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/](http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/).
+- There are also endpoints for password reset, which is located at: [http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset](http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset)
+- We have a working log in endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/login/](http://127.0.0.1:8000/api/v1/dj-rest-auth/login/).-
+- And a log out endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/](http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/).-
+- There are also endpoints for password reset, which is located at:[http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset](http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset)
 
 ## 4.2. User registration
 
@@ -599,8 +602,7 @@ urlpatterns += [
 ]
 ```
 
-- There is now a user registration endpoint at  F
-  <http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/>.
+- There is now a user registration endpoint at  F[http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/](http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/).
 
 ## 4.3. Views
 
@@ -620,11 +622,11 @@ class ARedirectApiView(APIView):
             image_location_in_media = "test.jpeg"
         else:
             image_location_in_media = "default_image.jpeg"
-            
+    
         host = request.get_host() # host is the domain name
         redirect_path = f"http://{host}/media/{image_location_in_media}"
         return HttpResponseRedirect(redirect_to=redirect_path)
-       
+   
 
 ```
 
@@ -636,51 +638,174 @@ class ARedirectApiView(APIView):
 
 `pip install coverage`
 
-> Running and erasing coverage  
+> Running and erasing coverage
 > For running on a django project, use this command:
 
 `coverage run --source='.' manage.py test the-app-you-want-to-test`
 
->This command will fill a “.coverage”, located in COVERAGE_FILE and then you may see results or report. If you need to remove gathered data, execute:
-`coverage erase`
+> This command will fill a “.coverage”, located in COVERAGE_FILE and then you may see results or report. If you need to remove gathered data, execute:
+> `coverage erase`
 
->**For a single file**  
->Maybe you only want to check a python code, then do:
+> **For a single file**
+> Maybe you only want to check a python code, then do:
 
 `coverage run your_program.py arg1 arg2 arg3`
 
-There are some additional options, take a look on <https://coverage.readthedocs.io/en/coverage-4.3.4/cmd.html#execution>
+There are some additional options, take a look on [https://coverage.readthedocs.io/en/coverage-4.3.4/cmd.html#execution](https://coverage.readthedocs.io/en/coverage-4.3.4/cmd.html#execution)
 
-> **See results**  
+> **See results**
 > If you want to show the results in the command line, run:
 
 `coverage report`
 
 > For more readable results run:
-`coverage html`
+> `coverage html`
 
 > To know concretely what part of your code is covered by tests, use:
-`coverage annotate -d directory-where-to-put-annotated-files`
+> `coverage annotate -d directory-where-to-put-annotated-files`
 
 It will generate same source code file with an additional syntax on it:
 
 - Line with “>” means it was executed
-
 - Line beginning with “!” means it was not executed
-
 - Line starting with “-” means the line was excluded in the coverage statistics
 
->Good coverage level  
->A good coverage usually comes on 90%.  
->However, if you see 100% it could be not so good signal because it could  >be someone dealing with coverage instead of quality of tests.  
+> Good coverage level
+> A good coverage usually comes on 90%.
+> However, if you see 100% it could be not so good signal because it could  >be someone dealing with coverage instead of quality of tests.
 
-**Some tips:**  
+**Some tips:**
 
 - Be careful with the quality of your tests
-
 - Don’t slow down your dev. velocity of the sake of the coverage
-
 - Use coverage to find untested code and decide if it deserve to cover
+
+```
+
+```
+
+## 4.5. Django 3.1 Async
+
+## 4.6. Using with Docker
+
+### 4.6.1. Create a project inside a docker container using docker-compose
+
+Here we will create a New django project inside a docker image.
+Can be extended to use with an existing project. Details will vbe added and further.
+
+Create a requirements.txt file with the following content:
+! this is the minimum architecture to run the project. We need Django and psycopg2
+
+```txt
+
+Django>=3.0,<4.0
+psycopg2-binary>=2.8
+
+```
+
+Create a Dockerfile with the following content:
+
+```dockerfile
+# syntax=docker/dockerfile:1
+FROM python:3
+ENV PYTHONUNBUFFERED=1
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+COPY . /code/
+```
+
+Create a docker-compose.yml file:
+
+Here you set Services:
+db:
+
+- create a PostgreSql database and image named postgres
+- create the volumes and set the environment variables with the database user password and db name
+
+web:  
+
+- build the image
+- runserver command
+- set dependencies to the database and run on ports 8000(this never in production)
+
+```yaml
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+```
+
+From the root of the directory:
+> Create the Django project by running the docker-compose run command as follows.
+
+`sudo docker-compose run web django-admin startproject composeexample .`
+
+> After the docker-compose command completes, list the contents of your project.
+
+`ls -l`
+
+![File list](Docker/list_dirs01.png)
+
+If you are running Docker on Mac or Windows, you should already have ownership of all files, including those generated by django-admin. List the files just to verify this.
+If you are running Docker on Linux, the files django-admin created are owned by root.  This happens because the container runs as the root user. Change the ownership of the new files.
+
+`sudo chown -R $USER:$USER .`
+
+To connect to the database, you have to set the variables in django settings.py file
+
+```python
+# settings.py
+   
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
+    }
+}
+```
+
+These settings are determined by the postgres Docker image specified in docker-compose.yml.
+Save and close the file.
+
+Run the docker-compose up command from the top level directory for your project.
+
+You can use `docker-compose up` in order to see exactly what is happening.
+
+![Simple compose up](Docker/simple_compose_up.png)
+
+Or you can use `docker-compose up -d --build` to run the containers in the background and build it.
+
+At this point, your Django app should be running at port 8000 on your Docker host. On Docker Desktop for Mac and Docker Desktop for Windows, go to `http://localhost:8000` on a web browser to see the Django welcome page.
+
+On certain  you may need to set `ALLOWED_HOSTS = ['*']` in your settings.py file.
+
+List running containers.
+`docker ps`
+
+Shutdown the containers.
+`docker-compose down`
+or `CTRL+C` to stop the running application
 
 # 5. SQL
 
@@ -941,7 +1066,13 @@ Options :
 
 # 8. Editors
 
-# 9. Resources
+# 9. Docker
+
+## 9.1. List running containers
+
+`docker ps`
+
+# 10. Resources
 
 There will be added more resources in the future.
 
