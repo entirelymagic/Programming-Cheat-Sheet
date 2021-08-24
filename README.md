@@ -28,7 +28,7 @@
     - [2.1.3. Working with a Remote Repository](#213-working-with-a-remote-repository)
       - [2.1.3.1. Fetch and merge all commits from the tracked remote branch](#2131-fetch-and-merge-all-commits-from-the-tracked-remote-branch)
       - [2.1.3.2. Fetch and merge all commits from a specific remote branch](#2132-fetch-and-merge-all-commits-from-a-specific-remote-branch)
-      - [2.1.3.3. Fetch recent changes from the tracked remote branch but don&#39;t merge them](#2133-fetch-recent-changes-from-the-tracked-remote-branch-but-dont-merge-them)
+      - [2.1.3.3. Fetch recent changes from the tracked remote branch but don't merge them](#2133-fetch-recent-changes-from-the-tracked-remote-branch-but-dont-merge-them)
       - [2.1.3.4. Push all local branch commits to the tracked remote branch](#2134-push-all-local-branch-commits-to-the-tracked-remote-branch)
       - [2.1.3.5. Push all local branch commits to a specific remote branch](#2135-push-all-local-branch-commits-to-a-specific-remote-branch)
       - [2.1.3.6. Add a new remote repository with the given alias](#2136-add-a-new-remote-repository-with-the-given-alias)
@@ -74,19 +74,20 @@
   - [2.5. Reset](#25-reset)
   - [2.6. Update local branch after main branch was renamed](#26-update-local-branch-after-main-branch-was-renamed)
 - [3. Python](#3-python)
-  - [3.1. Data Types](#31-data-types)
-    - [3.1.1. Text Type: `str`](#311-text-type-str)
-    - [3.1.2. Numeric Types: `int`, `float`, `complex`](#312-numeric-types-int-float-complex)
-    - [3.1.3. Sequence Types: `list`, `tuple`, `range`](#313-sequence-types-list-tuple-range)
-      - [3.1.3.1. List](#3131-list)
-        - [3.1.3.1.1. Transform a nested list into a simple list](#31311-transform-a-nested-list-into-a-simple-list)
-    - [3.1.4. Mapping Type: `dict`](#314-mapping-type-dict)
-    - [3.1.5. Set Types: `set`, `frozenset`](#315-set-types-set-frozenset)
-    - [3.1.6. Boolean Type: `bool`](#316-boolean-type-bool)
-    - [3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#317-binary-types-bytes-bytearray-memoryview)
-  - [3.2. Useful Functions](#32-useful-functions)
-    - [3.2.1. EAN generators](#321-ean-generators)
-    - [3.2.2. 3.2.2 XLSX Generators](#322-322-xlsx-generators)
+  - [3.1. Cheat Sheets](#31-cheat-sheets)
+  - [3.2. Data Types](#32-data-types)
+    - [3.2.1. Text Type: `str`](#321-text-type-str)
+    - [3.2.2. Numeric Types: `int`, `float`, `complex`](#322-numeric-types-int-float-complex)
+    - [3.2.3. Sequence Types: `list`, `tuple`, `range`](#323-sequence-types-list-tuple-range)
+      - [3.2.3.1. List](#3231-list)
+        - [3.2.3.1.1. Transform a nested list into a simple list](#32311-transform-a-nested-list-into-a-simple-list)
+    - [3.2.4. Mapping Type: `dict`](#324-mapping-type-dict)
+    - [3.2.5. Set Types: `set`, `frozenset`](#325-set-types-set-frozenset)
+    - [3.2.6. Boolean Type: `bool`](#326-boolean-type-bool)
+    - [3.2.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#327-binary-types-bytes-bytearray-memoryview)
+  - [3.3. Useful Functions](#33-useful-functions)
+    - [3.3.1. EAN generators](#331-ean-generators)
+    - [3.3.2. 3.2.2 XLSX Generators](#332-322-xlsx-generators)
 - [4. Django](#4-django)
   - [4.1. Authentication](#41-authentication)
   - [4.2. User registration](#42-user-registration)
@@ -121,7 +122,7 @@
     - [7.1.2. Networking](#712-networking)
       - [7.1.2.1. Ping host](#7121-ping-host)
       - [7.1.2.2. Show the actually routing table](#7122-show-the-actually-routing-table)
-      - [7.1.2.3. Check your iptable&#39;s rules](#7123-check-your-iptables-rules)
+      - [7.1.2.3. Check your iptable's rules](#7123-check-your-iptables-rules)
       - [7.1.2.4. List all ports](#7124-list-all-ports)
       - [7.1.2.5. Got whois for domain](#7125-got-whois-for-domain)
       - [7.1.2.6. Get DNS for domain](#7126-get-dns-for-domain)
@@ -140,7 +141,7 @@
     - [7.1.4. System Info](#714-system-info)
       - [7.1.4.1. Show current date/time](#7141-show-current-datetime)
       - [7.1.4.2. Show uptime](#7142-show-uptime)
-      - [7.1.4.3. Who you&#39;re logged in as](#7143-who-youre-logged-in-as)
+      - [7.1.4.3. Who you're logged in as](#7143-who-youre-logged-in-as)
       - [7.1.4.4. Display who is online](#7144-display-who-is-online)
       - [7.1.4.5. Memory info](#7145-memory-info)
       - [7.1.4.6. Show memory and swap usage](#7146-show-memory-and-swap-usage)
@@ -467,17 +468,25 @@ git remote set-head origin -a
 
 # 3. Python
 
-## 3.1. Data Types
+## 3.1. Cheat Sheets
 
-### 3.1.1. Text Type: `str`
+<object width="1000" height="800" type="application/pdf" data="/Python/python_cheat_sheet.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0">
+    <p>Insert your error message here, if the PDF cannot be displayed.</p>
+</object>
 
-### 3.1.2. Numeric Types: `int`, `float`, `complex`
+<embed src="Python/python_cheat_sheet.pdf" width="1000" height="800" frameborder="0" allowfullscreen>
 
-### 3.1.3. Sequence Types: `list`, `tuple`, `range`
+## 3.2. Data Types
 
-#### 3.1.3.1. List
+### 3.2.1. Text Type: `str`
 
-##### 3.1.3.1.1. Transform a nested list into a simple list
+### 3.2.2. Numeric Types: `int`, `float`, `complex`
+
+### 3.2.3. Sequence Types: `list`, `tuple`, `range`
+
+#### 3.2.3.1. List
+
+##### 3.2.3.1.1. Transform a nested list into a simple list
 
 ```python
 from functools import reduce
@@ -487,17 +496,17 @@ nested_list = [[1], [2], [3, 5, 6], [4, 3, 12, 33]]
 simple_list = reduce(lambda x,y: x+y, nested_list)
 ```
 
-### 3.1.4. Mapping Type: `dict`
+### 3.2.4. Mapping Type: `dict`
 
-### 3.1.5. Set Types: `set`, `frozenset`
+### 3.2.5. Set Types: `set`, `frozenset`
 
-### 3.1.6. Boolean Type: `bool`
+### 3.2.6. Boolean Type: `bool`
 
-### 3.1.7. Binary Types: `bytes`, `bytearray`, `memoryview`
+### 3.2.7. Binary Types: `bytes`, `bytearray`, `memoryview`
 
-## 3.2. Useful Functions
+## 3.3. Useful Functions
 
-### 3.2.1. EAN generators
+### 3.3.1. EAN generators
 
 Generate EAN 13 barcode for products.
 
@@ -512,7 +521,7 @@ EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](ht
 - [https://python-barcode.readthedocs.io/en/stable/](https://python-barcode.readthedocs.io/en/stable/)
 - `python-barcode==0.13.1`
 
-### 3.2.2. 3.2.2 XLSX Generators
+### 3.3.2. 3.2.2 XLSX Generators
 
 - **XlsxWriter**8:  Only for generating NEW files.
 
@@ -1020,10 +1029,10 @@ Options :
 
 # 9. Resources
 
-* There will be added more resources in the future.
-* Linux Cheatsheet from Visual studio Code
-* Docker
+- There will be added more resources in the future.
+- Linux Cheatsheet from Visual studio Code
+- Docker
 
-  * https://docs.docker.com/samples/django/
+  - <https://docs.docker.com/samples/django/>
 
-https://docs.docker.com/samples/django/
+<https://docs.docker.com/samples/django/>
