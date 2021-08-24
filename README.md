@@ -470,11 +470,9 @@ git remote set-head origin -a
 
 ## 3.1. Cheat Sheets
 
-<object width="1000" height="800" type="application/pdf" data="/Python/python_cheat_sheet.pdf?#zoom=85&scrollbar=0&toolbar=0&navpanes=0">
-    <p>Insert your error message here, if the PDF cannot be displayed.</p>
-</object>
 
-<embed src="Python/python_cheat_sheet.pdf" width="1000" height="800" frameborder="0" allowfullscreen>
+<a href="/Python/python_cheat_sheet.pdf">Beginners Python Cheat Sheet</a>
+
 
 ## 3.2. Data Types
 
@@ -1033,6 +1031,6 @@ Options :
 - Linux Cheatsheet from Visual studio Code
 - Docker
 
-  - <https://docs.docker.com/samples/django/>
+  - [https://docs.docker.com/samples/django/](https://docs.docker.com/samples/django/)
 
-<https://docs.docker.com/samples/django/>
+[https://docs.docker.com/samples/django/](https://docs.docker.com/samples/django/)
