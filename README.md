@@ -1041,6 +1041,10 @@ Options :
 Found this image that is a good starting point for data science projects:
 You need docker allready installed on the machine.
 
+Installation link and instructions can be found here:
+
+<https://docs.docker.com/get-docker/>
+
 <https://hub.docker.com/r/civisanalytics/datascience-python>
 
 1. `docker pull civisanalytics/datascience-python`
