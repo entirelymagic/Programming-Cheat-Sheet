@@ -89,15 +89,16 @@
     - [3.3.1. EAN generators](#331-ean-generators)
     - [3.3.2. 3.2.2 XLSX Generators](#332-322-xlsx-generators)
 - [4. Django](#4-django)
-  - [4.1. Authentication](#41-authentication)
-  - [4.2. User registration](#42-user-registration)
-  - [4.3. Views](#43-views)
-    - [4.3.1. API views](#431-api-views)
-      - [4.3.1.1. Redirect](#4311-redirect)
-  - [4.4. Django Testing](#44-django-testing)
-    - [4.4.1. Coverage](#441-coverage)
-  - [4.5. Django 3.1 Async](#45-django-31-async)
-  - [4.6. Using with Docker](#46-using-with-docker)
+  - [4.1. Cheat Sheet](#41-cheat-sheet)
+  - [4.2. Authentication](#42-authentication)
+  - [4.3. User registration](#43-user-registration)
+  - [4.4. Views](#44-views)
+    - [4.4.1. API views](#441-api-views)
+      - [4.4.1.1. Redirect](#4411-redirect)
+  - [4.5. Django Testing](#45-django-testing)
+    - [4.5.1. Coverage](#451-coverage)
+  - [4.6. Django 3.1 Async](#46-django-31-async)
+  - [4.7. Using with Docker](#47-using-with-docker)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -470,9 +471,7 @@ git remote set-head origin -a
 
 ## 3.1. Cheat Sheets
 
-
 <a href="/Python/python_cheat_sheet.pdf">Beginners Python Cheat Sheet</a>
-
 
 ## 3.2. Data Types
 
@@ -529,7 +528,15 @@ EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](ht
 
 # 4. Django
 
-## 4.1. Authentication
+## 4.1. Cheat Sheet
+
+![Django Cheat Sheet](Django/Django_Cheat_Sheet.png)
+
+<a href="Django/Djaneiro_Cheat_Sheet.pdf">Djaneiro Cheat Sheet</a>
+
+<a href="Django/django-models.pdf">Django Models Cheat Sheet</a>
+
+## 4.2. Authentication
 
 ```python
 ## Default Authentication
@@ -581,7 +588,7 @@ urlpatterns += [
 - And a log out endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/](http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/).-
 - There are also endpoints for password reset, which is located at:[http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset](http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset)
 
-## 4.2. User registration
+## 4.3. User registration
 
 ```python
 pipenv install django-allauth
@@ -608,11 +615,11 @@ urlpatterns += [
 
 - There is now a user registration endpoint at  F[http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/](http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/).
 
-## 4.3. Views
+## 4.4. Views
 
-### 4.3.1. API views
+### 4.4.1. API views
 
-#### 4.3.1.1. Redirect
+#### 4.4.1.1. Redirect
 
 ```python
 class ARedirectApiView(APIView):
@@ -634,9 +641,9 @@ class ARedirectApiView(APIView):
 
 ```
 
-## 4.4. Django Testing
+## 4.5. Django Testing
 
-### 4.4.1. Coverage
+### 4.5.1. Coverage
 
 > **Installation**
 
@@ -688,9 +695,9 @@ It will generate same source code file with an additional syntax on it:
 
 ```
 
-## 4.5. Django 3.1 Async
+## 4.6. Django 3.1 Async
 
-## 4.6. Using with Docker
+## 4.7. Using with Docker
 
 Here we will create a New django project inside a docker image.
 Can be extended to use with an existing project. Details will vbe added and further.
