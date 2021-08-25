@@ -168,10 +168,14 @@
 - [8. Editors](#8-editors)
 - [9. Docker](#9-docker)
   - [9.1. Docker for Data Science](#91-docker-for-data-science)
-  - [9.2. Cheat Sheet](#92-cheat-sheet)
-    - [9.2.1. To stop all Docker containers, simply run the following command in your terminal](#921-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
-    - [9.2.2. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#922-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
-    - [9.2.3. To remove all Docker images, run this command](#923-to-remove-all-docker-images-run-this-command)
+  - [9.2. Docker Cheat Sheet](#92-docker-cheat-sheet)
+    - [9.2.1. Docker Command Abbreviation](#921-docker-command-abbreviation)
+    - [9.2.2. Run Interactive command](#922-run-interactive-command)
+    - [9.2.3. Port Mapping](#923-port-mapping)
+    - [9.2.4. To stop all Docker containers, simply run the following command in your terminal](#924-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
+    - [9.2.5. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#925-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
+    - [9.2.6. To remove all Docker images, run this command](#926-to-remove-all-docker-images-run-this-command)
+    - [Bind Mount Host Folders](#bind-mount-host-folders)
 - [10. Resources](#10-resources)
 
 # 1. General information
@@ -1065,26 +1069,70 @@ In the container, you start the jupyter notebook server.
  `docker run -p 8888:8888 -i -t -v /Users/elvismunteanu/elvism/DataScience:/elvism civisanalytics/datascience-python:latest /bin/bash`
  The command added to second step is `-v <Your folder location>:<Folder name and location from the Docker container to pass it in>`
 
-## 9.2. Cheat Sheet
+## 9.2. Docker Cheat Sheet
 
-### 9.2.1. To stop all Docker containers, simply run the following command in your terminal
+### 9.2.1. Docker Command Abbreviation
+
+![Docker Abbreviations commands](Docker/Dockerfile_commands.png)
+
+### 9.2.2. Run Interactive command
+
+`docker run -it python:3 bash`
+
+> Use -it or --interactive --tty option to create an interactive container.
+> Can be stopped typing `exit`
+
+### 9.2.3. Port Mapping
+
+> `-p 8080:80`
+> `-p <host port>:<container port>`
+
+- Use `-p` or --publish to declare port mapping
+- Use `-p` multiple times for several Port Mappings
+- Use `-P` to publish all Containers Ports declared in Image Metadata to random Host Ports from upper Range
+- Docker port <container_name> shows Port Mappings
+- Port Mapping must be declared at container creation
+
+```bash
+Commands examples:
+$ docker run -it -p 8080:80 -p 8443:443 nginx
+$ docker run -it -p 8000:80 -p 8443:443 nginx
+$ docker run -it -p 8888:8888 jupyter/datascience-notebook
+```
+
+### 9.2.4. To stop all Docker containers, simply run the following command in your terminal
 
 `docker kill $(docker ps -q)`
 
-### 9.2.2. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command
+### 9.2.5. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command
 
 `docker rm $(docker ps -a -q)`
 
-### 9.2.3. To remove all Docker images, run this command
+### 9.2.6. To remove all Docker images, run this command
 
 `docker rmi $(docker images -q)`
+
+### Bind Mount Host Folders
+
+> `-v ${PWD}:/app`
+> `-v <host_folder(Source Path)>:<container_folder(Mount Point)>`
+> Host path must be absolute path
+> On windows must start with drive location (e.g. C:/Users/elvis/elvism/DataScience)
+>
+> - add :ro at the end to enable read only access
+
+`docker run -t -v ${PWD}:/app python:3 bash`
+
+- Use `-v` or --volume to mount a host directory inside a container
+- Use `-v` multiple times for several Bind Mounts
+- Mount Point is automatically created if not created
 
 # 10. Resources
 
 - There will be added more resources in the future.
 - Linux Cheatsheet from Visual studio Code
 - Docker
-
+  - [docs.docker.com](https://docs.docker.com/get-started/overview/)
   - [https://docs.docker.com/samples/django/](https://docs.docker.com/samples/django/)
 
   - <https://hub.docker.com/r/civisanalytics/datascience-python>
