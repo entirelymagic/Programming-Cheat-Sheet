@@ -169,13 +169,37 @@
 - [9. Docker](#9-docker)
   - [9.1. Docker for Data Science](#91-docker-for-data-science)
   - [9.2. Docker Cheat Sheet](#92-docker-cheat-sheet)
-    - [9.2.1. Docker Command Abbreviation](#921-docker-command-abbreviation)
-    - [9.2.2. Run Interactive command](#922-run-interactive-command)
-    - [9.2.3. Port Mapping](#923-port-mapping)
-    - [9.2.4. To stop all Docker containers, simply run the following command in your terminal](#924-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
-    - [9.2.5. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#925-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
-    - [9.2.6. To remove all Docker images, run this command](#926-to-remove-all-docker-images-run-this-command)
-    - [Bind Mount Host Folders](#bind-mount-host-folders)
+    - [9.2.1. Create Containers without Starting](#921-create-containers-without-starting)
+    - [9.2.2. Start a Container](#922-start-a-container)
+    - [9.2.3. Inspect a Container](#923-inspect-a-container)
+    - [9.2.4. Container Names](#924-container-names)
+    - [9.2.5. Run Interactive command](#925-run-interactive-command)
+    - [9.2.6. Port Mapping](#926-port-mapping)
+    - [9.2.7. To stop all Docker containers, simply run the following command in your terminal](#927-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
+    - [9.2.8. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#928-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
+    - [9.2.9. To remove all Docker images, run this command](#929-to-remove-all-docker-images-run-this-command)
+    - [9.2.10. Bind Mount Host Folders](#9210-bind-mount-host-folders)
+    - [9.2.11. List Containers](#9211-list-containers)
+    - [9.2.12. Run Container in Background or Detached](#9212-run-container-in-background-or-detached)
+    - [9.2.13. Attack to a Container](#9213-attack-to-a-container)
+    - [9.2.14. Environment Variables in Container](#9214-environment-variables-in-container)
+    - [9.2.15. Attach Commands in Running Container](#9215-attach-commands-in-running-container)
+    - [9.2.16. Pull a Image](#9216-pull-a-image)
+    - [9.2.17. Rename the image](#9217-rename-the-image)
+    - [9.2.18. Print Container Logs](#9218-print-container-logs)
+    - [9.2.19. Inspect Image Metadata](#9219-inspect-image-metadata)
+  - [9.3. Create a Docker Image with example](#93-create-a-docker-image-with-example)
+    - [9.3.1. DockerFile Format](#931-dockerfile-format)
+      - [9.3.1.1. Filesystem Modification Instructions](#9311-filesystem-modification-instructions)
+      - [9.3.1.2. Metadata Modification Instructions](#9312-metadata-modification-instructions)
+    - [9.3.2. Docker Build Command](#932-docker-build-command)
+    - [9.3.3. ARG instruction](#933-arg-instruction)
+    - [9.3.4. Copy instructions](#934-copy-instructions)
+      - [9.3.4.1. Copy and file ownership](#9341-copy-and-file-ownership)
+    - [9.3.5. RUN instruction](#935-run-instruction)
+    - [9.3.6. Volume Mount Points](#936-volume-mount-points)
+    - [9.3.7. Docker Hub Push Image to Registry](#937-docker-hub-push-image-to-registry)
+      - [9.3.7.1. Other Image Registries](#9371-other-image-registries)
 - [10. Resources](#10-resources)
 
 # 1. General information
@@ -1071,18 +1095,41 @@ In the container, you start the jupyter notebook server.
 
 ## 9.2. Docker Cheat Sheet
 
-### 9.2.1. Docker Command Abbreviation
+### 9.2.1. Create Containers without Starting
 
-![Docker Abbreviations commands](Docker/Dockerfile_commands.png)
+> `docker container create [image]`
+> `docker create [image] [command]`
+> Use same options and arguments for `docker run`
+> Image is downloaded if it is not present and Filesystem is created
+> Containers can be started later with `docker start`
 
-### 9.2.2. Run Interactive command
+### 9.2.2. Start a Container
+
+> `docker start [container]`
+> `docker container start [container]`
+> Use `-a` to attach to the container STDOUT and STDERR
+> Use `-i` to attach to the container STDIN (standard input)
+
+### 9.2.3. Inspect a Container
+
+> `docker inspect [container]`
+> Prints out the container's configuration
+
+### 9.2.4. Container Names
+
+> `--name [name]`
+> Use --name to name the container.
+> If not specified, the container will be named after the image.
+> Default Names have a form: <image_name>_<random_string>
+
+### 9.2.5. Run Interactive command
 
 `docker run -it python:3 bash`
 
 > Use -it or --interactive --tty option to create an interactive container.
 > Can be stopped typing `exit`
 
-### 9.2.3. Port Mapping
+### 9.2.6. Port Mapping
 
 > `-p 8080:80`
 > `-p <host port>:<container port>`
@@ -1100,19 +1147,19 @@ $ docker run -it -p 8000:80 -p 8443:443 nginx
 $ docker run -it -p 8888:8888 jupyter/datascience-notebook
 ```
 
-### 9.2.4. To stop all Docker containers, simply run the following command in your terminal
+### 9.2.7. To stop all Docker containers, simply run the following command in your terminal
 
 `docker kill $(docker ps -q)`
 
-### 9.2.5. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command
+### 9.2.8. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command
 
 `docker rm $(docker ps -a -q)`
 
-### 9.2.6. To remove all Docker images, run this command
+### 9.2.9. To remove all Docker images, run this command
 
 `docker rmi $(docker images -q)`
 
-### Bind Mount Host Folders
+### 9.2.10. Bind Mount Host Folders
 
 > `-v ${PWD}:/app`
 > `-v <host_folder(Source Path)>:<container_folder(Mount Point)>`
@@ -1126,6 +1173,189 @@ $ docker run -it -p 8888:8888 jupyter/datascience-notebook
 - Use `-v` or --volume to mount a host directory inside a container
 - Use `-v` multiple times for several Bind Mounts
 - Mount Point is automatically created if not created
+
+Alternative option:
+
+> `--mount type=bind,source=${PWD},target=/app`
+> It uses the same syntax as the `-v` option, but more verbose.
+
+### 9.2.11. List Containers
+
+> display a list of running containers
+`docker ps`
+`docker container ls`
+
+> Use -a or -all to display all containers, including stopped ones and paused
+
+### 9.2.12. Run Container in Background or Detached
+
+> `-d` or `--detach`
+
+### 9.2.13. Attack to a Container
+
+> `docker container attach <container>`
+> `docker attach <container>`
+>
+> Use Inspect Command to get detailed Metadata information about the image
+> Use History Command to ee how the Image was built
+
+### 9.2.14. Environment Variables in Container
+
+> `-e <key>=<value>`
+> `--env-file <file>` - read variables from file in Docker host
+
+### 9.2.15. Attach Commands in Running Container
+
+> `docker container exec <container> <command>`
+> `docker exec <container> <command>`
+> `docker exec -it <container> bash`
+> Use -it for interactive mode
+> Use -w to change working directory
+> Use `-e <VAR>=<value>` to pass environment variables
+
+### 9.2.16. Pull a Image
+
+> `docker pull <image>`
+> `docker image pull <image>`
+> Use `:latest` at the end to pull the latest version of the image
+> Use -a to pull all tags of the image
+
+### 9.2.17. Rename the image
+
+> `docker rename <old_image> <new_image>`
+> remove image name with `docker rmi <image>`
+
+### 9.2.18. Print Container Logs
+
+> `docker container logs <container_name>`
+> `docker logs <container>`
+> `docker logs -f <container>` - print in real time, press CTRL+C to stop/ It stops the command not the container
+> Use -t to print timestamps
+> Use --since to print logs since a specific timeframe
+
+### 9.2.19. Inspect Image Metadata
+
+ > `docker image inspect <image>`
+ > `docker inspect <image>`
+ > `docker image history <image>`
+
+## 9.3. Create a Docker Image with example
+
+ Components of a Docker Image:
+
+- File System
+- Metadata
+
+Image Build Process:
+
+- Start With Base Image
+- Copy Source Code, Configuration and Data Files
+- Install required packages and libraries
+- Modify Metadata
+  - Working Directory
+  - Environment Variables
+  - Volume Mount Points and Exposed Ports
+  - Labels
+  - Startup Commands
+- Commit the image and add Name and Tag
+
+### 9.3.1. DockerFile Format
+
+> `FROM <base_image>`
+> `INSTRUCTION arguments`
+>
+> ```INSTRUCTION arguments  \
+>  more arguments```
+> `INSTRUCTION arguments # comment`
+
+#### 9.3.1.1. Filesystem Modification Instructions
+
+- Declare Base Image: `FROM <base_image>`
+- Copy files and directories from Build Context to Image Filesystem
+ `COPY <from> <to>`
+- Execute a Command during build time (non-interactive commands only)
+  `RUN <command>`
+
+#### 9.3.1.2. Metadata Modification Instructions
+
+- Set Working Directory: `WORKDIR <path>`
+- Define Environment Variables: `ENV <key> <value>`
+- Declare Volume Mount Points: `VOLUME <path>`
+- Declare Exposed Ports: `EXPOSE <port>`
+- Define Startup Commands: `CMD <command>`
+  - can define an entrypoint `ENTRYPOINT <command>`
+
+### 9.3.2. Docker Build Command
+
+> `docker build -t <image_name> .` the dot represent the current folder containing the Dockerfile
+
+### 9.3.3. ARG instruction
+
+> This is usefull when the base arguments are needed to be changed but we do not wanna change them in the Dockerfile
+> ARG base=python
+> ARG tag=3
+> FROM $base:$tag -> python:3.9
+> example:
+> `docker build -t myimage:3.9 --build-arg tag=3.9 .`
+
+### 9.3.4. Copy instructions
+
+> `COPY <from> <to>`
+> `COPY <from> <from> <from> <destination\>` To copy multiple files or folders the last argument must be a directory
+
+#### 9.3.4.1. Copy and file ownership
+
+> `COPY --chown=<user>:<group> <from> <to>`
+> user must exist in Image's /etc/passwd
+> group must exist in Image's /etc/group
+
+> example:
+> `COPY --chown=elvis:elvis /Users/elvis/elvism/DataScience/ /app/`
+> `COPY --chown=1000:55 src dst`
+
+### 9.3.5. RUN instruction
+
+Run can be used to install and to start a command in the container
+
+> `RUN <command>`
+> `RUN <shell command line>`
+>
+> - Default Shell is /bin/sh
+> - No background Processes are allowed!
+> - Only non-interactive commands are allowed!
+
+> RUN examples:
+> `RUN pip install -r requirements.txt`
+> `RUN pip install django==3.2.6`
+> `RUN conda install -y pandas`
+> `RUN python manage.py migrate`
+> `RUN useradd elvis && chown -R elvis:elvis /app > /tmp/logfile`
+
+### 9.3.6. Volume Mount Points
+
+> `VOLUME <path>`
+> Declares a volume mount point at directory <path>
+> Directory <path> is created if it does not exist
+> Why use VOLUME?
+>
+> - To share data between containers
+> - Data persistence - they are independent of containers
+> - High Performance
+
+> List of Volume Mount Points `docker volume ls`
+> Create a Volume Mount Point `docker volume create <name>`
+> Remove a Volume Mount Point `docker volume rm <name>`
+
+### 9.3.7. Docker Hub Push Image to Registry
+
+> `docker login`
+> `docker tag <image> <registry>/<image>:<tag>`
+> `docker push <registry>/<image>:<tag>`
+> Docker name must include Docker Hub Account name or namespace
+
+#### 9.3.7.1. Other Image Registries
+
+Other docker registries can be used to push images to. You can use any registry that supports the Docker Registry API.
 
 # 10. Resources
 
