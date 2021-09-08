@@ -12,14 +12,15 @@
 - [2. GIT](#2-git)
   - [2.1. Cheat sheet](#21-cheat-sheet)
     - [2.1.1. Local Changes](#211-local-changes)
-      - [2.1.1.1. Display the status of modified files](#2111-display-the-status-of-modified-files)
-      - [2.1.1.2. Add a file to staging as it looks right now](#2112-add-a-file-to-staging-as-it-looks-right-now)
-      - [2.1.1.3. Add a folder to staging as it looks right now](#2113-add-a-folder-to-staging-as-it-looks-right-now)
-      - [2.1.1.4. Commit staged files in a new commit](#2114-commit-staged-files-in-a-new-commit)
-      - [2.1.1.5. Add all files to staging and commit them at once](#2115-add-all-files-to-staging-and-commit-them-at-once)
-      - [2.1.1.6. Unstage a file while retaining the changes](#2116-unstage-a-file-while-retaining-the-changes)
-      - [2.1.1.7. Diff of what is changed but not staged](#2117-diff-of-what-is-changed-but-not-staged)
-      - [2.1.1.8. Diff of what has changed between staged changes and the last commit](#2118-diff-of-what-has-changed-between-staged-changes-and-the-last-commit)
+      - [2.1.1.1. Create a git patch from the uncommitted changes in the current working directory](#2111-create-a-git-patch-from-the-uncommitted-changes-in-the-current-working-directory)
+      - [2.1.1.2. Display the status of modified files](#2112-display-the-status-of-modified-files)
+      - [2.1.1.3. Add a file to staging as it looks right now](#2113-add-a-file-to-staging-as-it-looks-right-now)
+      - [2.1.1.4. Add a folder to staging as it looks right now](#2114-add-a-folder-to-staging-as-it-looks-right-now)
+      - [2.1.1.5. Commit staged files in a new commit](#2115-commit-staged-files-in-a-new-commit)
+      - [2.1.1.6. Add all files to staging and commit them at once](#2116-add-all-files-to-staging-and-commit-them-at-once)
+      - [2.1.1.7. Unstage a file while retaining the changes](#2117-unstage-a-file-while-retaining-the-changes)
+      - [2.1.1.8. Diff of what is changed but not staged](#2118-diff-of-what-is-changed-but-not-staged)
+      - [2.1.1.9. Diff of what has changed between staged changes and the last commit](#2119-diff-of-what-has-changed-between-staged-changes-and-the-last-commit)
     - [2.1.2. Branches](#212-branches)
       - [2.1.2.1. List all branches. The current one is marked with *](#2121-list-all-branches-the-current-one-is-marked-with-)
       - [2.1.2.2. Create a new branch](#2122-create-a-new-branch)
@@ -217,35 +218,50 @@ IF you connect your account and synchronize it will load your settings.**
 
 ### 2.1.1. Local Changes
 
-#### 2.1.1.1. Display the status of modified files
+#### 2.1.1.1. Create a git patch from the uncommitted changes in the current working directory
+
+If you haven't yet committed the changes, then:
+
+`git diff > mypatch.patch`
+But sometimes it happens that part of the stuff you're doing are new files that are untracked and won't be in your git diff output. So, one way to do a patch is to stage everything for a new commit (`git add each file`, or just `git add .`) but don't do the commit, and then:
+
+`git diff --cached > mypatch.patch`
+Add the 'binary' option if you want to add binary files to the patch (e.g. mp3 files):
+
+`git diff --cached --binary > mypatch.patch`
+You can later apply the patch:
+
+`git apply mypatch.patch`
+
+#### 2.1.1.2. Display the status of modified files
 
 `git status`
 
-#### 2.1.1.2. Add a file to staging as it looks right now
+#### 2.1.1.3. Add a file to staging as it looks right now
 
 `git add [file_name]`
 
-#### 2.1.1.3. Add a folder to staging as it looks right now
+#### 2.1.1.4. Add a folder to staging as it looks right now
 
 `git add [folder_name]`
 
-#### 2.1.1.4. Commit staged files in a new commit
+#### 2.1.1.5. Commit staged files in a new commit
 
 `git commit -m "descriptive_message"`
 
-#### 2.1.1.5. Add all files to staging and commit them at once
+#### 2.1.1.6. Add all files to staging and commit them at once
 
 `git commit -am "descriptive_message"`
 
-#### 2.1.1.6. Unstage a file while retaining the changes
+#### 2.1.1.7. Unstage a file while retaining the changes
 
 `git reset [file_name]`
 
-#### 2.1.1.7. Diff of what is changed but not staged
+#### 2.1.1.8. Diff of what is changed but not staged
 
 `git diff`
 
-#### 2.1.1.8. Diff of what has changed between staged changes and the last commit
+#### 2.1.1.9. Diff of what has changed between staged changes and the last commit
 
 `git diff --staged`
 
