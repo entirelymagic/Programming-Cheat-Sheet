@@ -201,7 +201,10 @@
     - [9.3.6. Volume Mount Points](#936-volume-mount-points)
     - [9.3.7. Docker Hub Push Image to Registry](#937-docker-hub-push-image-to-registry)
       - [9.3.7.1. Other Image Registries](#9371-other-image-registries)
-- [10. Resources](#10-resources)
+- [10. SQL](#10-sql)
+  - [10.1. POSGRESQL](#101-posgresql)
+    - [10.1.1. Update a table that have a column with a null value with a value](#1011-update-a-table-that-have-a-column-with-a-null-value-with-a-value)
+- [11. Resources](#11-resources)
 
 # 1. General information
 
@@ -1373,7 +1376,17 @@ Run can be used to install and to start a command in the container
 
 Other docker registries can be used to push images to. You can use any registry that supports the Docker Registry API.
 
-# 10. Resources
+# 10. SQL
+
+## 10.1. POSGRESQL
+
+### 10.1.1. Update a table that have a column with a null value with a value
+
+```postgresql
+ UPDATE table SET col1 = 0 WHERE col1 IS NULL;
+```
+
+# 11. Resources
 
 - There will be added more resources in the future.
 - Linux Cheatsheet from Visual studio Code
