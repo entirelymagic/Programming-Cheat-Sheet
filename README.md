@@ -95,6 +95,7 @@
     - [3.3.2. 3.2.2 XLSX Generators](#332-322-xlsx-generators)
 - [4. Django](#4-django)
   - [4.1. Cheat Sheet](#41-cheat-sheet)
+  - [Django Extensions](#django-extensions)
   - [4.2. Authentication](#42-authentication)
   - [4.3. User registration](#43-user-registration)
   - [4.4. Views](#44-views)
@@ -214,6 +215,7 @@
 IF you connect your account and synchronize it will load your settings.**
 ![Open Online Editor](GIT/onlineEditor.png)
 ![Editor example](GIT/editor_example.png)
+
 
 # 2. GIT
 
@@ -592,6 +594,13 @@ EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](ht
 <a href="Django/Djaneiro_Cheat_Sheet.pdf">Djaneiro Cheat Sheet</a>
 
 <a href="Django/django-models.pdf">Django Models Cheat Sheet</a>
+
+
+## Django Extensions
+
+This include also generation for database models using graphwiz.
+
+<https://github.com/django-extensions/django-extensions>
 
 ## 4.2. Authentication
 
