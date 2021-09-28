@@ -93,18 +93,20 @@
   - [3.3. Useful Functions](#33-useful-functions)
     - [3.3.1. EAN generators](#331-ean-generators)
     - [3.3.2. 3.2.2 XLSX Generators](#332-322-xlsx-generators)
+  - [3.4. Asynchronous Python](#34-asynchronous-python)
+    - [3.4.1. Asynchronous Web Socket Class](#341-asynchronous-web-socket-class)
 - [4. Django](#4-django)
   - [4.1. Cheat Sheet](#41-cheat-sheet)
-  - [Django Extensions](#django-extensions)
-  - [4.2. Authentication](#42-authentication)
-  - [4.3. User registration](#43-user-registration)
-  - [4.4. Views](#44-views)
-    - [4.4.1. API views](#441-api-views)
-      - [4.4.1.1. Redirect](#4411-redirect)
-  - [4.5. Django Testing](#45-django-testing)
-    - [4.5.1. Coverage](#451-coverage)
-  - [4.6. Django 3.1 Async](#46-django-31-async)
-  - [4.7. Using with Docker](#47-using-with-docker)
+  - [4.2. Django Extensions](#42-django-extensions)
+  - [4.3. Authentication](#43-authentication)
+  - [4.4. User registration](#44-user-registration)
+  - [4.5. Views](#45-views)
+    - [4.5.1. API views](#451-api-views)
+      - [4.5.1.1. Redirect](#4511-redirect)
+  - [4.6. Django Testing](#46-django-testing)
+    - [4.6.1. Coverage](#461-coverage)
+  - [4.7. Django 3.1 Async](#47-django-31-async)
+  - [4.8. Using with Docker](#48-using-with-docker)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -215,7 +217,6 @@
 IF you connect your account and synchronize it will load your settings.**
 ![Open Online Editor](GIT/onlineEditor.png)
 ![Editor example](GIT/editor_example.png)
-
 
 # 2. GIT
 
@@ -585,6 +586,74 @@ EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](ht
 
   [https://xlsxwriter.readthedocs.io/index.html](https://xlsxwriter.readthedocs.io/index.html)
 
+## 3.4. Asynchronous Python
+
+### 3.4.1. Asynchronous Web Socket Class
+
+This is testws.py
+
+```python
+!/usr/bin/env python3
+# testws.py
+import sys, json
+import asyncio
+from websockets import connect
+
+class EchoWebsocket:
+    async def __aenter__(self):
+        self._conn = connect('wss://ws.binaryws.com/websockets/v3')
+        self.websocket = await self._conn.__aenter__()        
+        return self
+
+    async def __aexit__(self, *args, **kwargs):
+        await self._conn.__aexit__(*args, **kwargs)
+
+    async def send(self, message):
+        await self.websocket.send(message)
+
+    async def receive(self):
+        return await self.websocket.recv()
+
+class mtest:
+    def __init__(self):
+        self.wws = EchoWebsocket()
+        self.loop = asyncio.get_event_loop()
+
+    def get_ticks(self):
+        return self.loop.run_until_complete(self.__async__get_ticks())
+
+    async def __async__get_ticks(self):
+        async with self.wws as echo:
+            await echo.send(json.dumps({'ticks_history': 'R_50', 'end': 'latest', 'count': 1}))
+            return await echo.receive()
+```
+
+And this in main.py:
+
+```python
+# main.py
+from testws import *
+
+a = mtest()
+
+foo = a.get_ticks()
+print (foo)
+
+print ("async works like a charm!")
+
+foo = a.get_ticks()
+print (foo)
+```
+
+This is the output:
+
+```python
+root@ubupc1:/home/dinocob# python3 test.py
+{"count": 1, "end": "latest", "ticks_history": "R_50"}
+async works like a charm!
+{"count": 1, "end": "latest", "ticks_history": "R_50"}
+```
+
 # 4. Django
 
 ## 4.1. Cheat Sheet
@@ -595,14 +664,13 @@ EAN country codes : [https://wholesgame.com/trade-info/ean-barcodes-country/](ht
 
 <a href="Django/django-models.pdf">Django Models Cheat Sheet</a>
 
-
-## Django Extensions
+## 4.2. Django Extensions
 
 This include also generation for database models using graphwiz.
 
 <https://github.com/django-extensions/django-extensions>
 
-## 4.2. Authentication
+## 4.3. Authentication
 
 ```python
 ## Default Authentication
@@ -654,7 +722,7 @@ urlpatterns += [
 - And a log out endpoint at [http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/](http://127.0.0.1:8000/api/v1/dj-rest-auth/logout/).-
 - There are also endpoints for password reset, which is located at:[http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset](http://127.0.0.1:8000/api/v1/dj-rest-auth/password/reset)
 
-## 4.3. User registration
+## 4.4. User registration
 
 ```python
 pipenv install django-allauth
@@ -681,11 +749,11 @@ urlpatterns += [
 
 - There is now a user registration endpoint at  F[http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/](http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/).
 
-## 4.4. Views
+## 4.5. Views
 
-### 4.4.1. API views
+### 4.5.1. API views
 
-#### 4.4.1.1. Redirect
+#### 4.5.1.1. Redirect
 
 ```python
 class ARedirectApiView(APIView):
@@ -707,9 +775,9 @@ class ARedirectApiView(APIView):
 
 ```
 
-## 4.5. Django Testing
+## 4.6. Django Testing
 
-### 4.5.1. Coverage
+### 4.6.1. Coverage
 
 > **Installation**
 
@@ -761,9 +829,9 @@ It will generate same source code file with an additional syntax on it:
 
 ```
 
-## 4.6. Django 3.1 Async
+## 4.7. Django 3.1 Async
 
-## 4.7. Using with Docker
+## 4.8. Using with Docker
 
 Here we will create a New django project inside a docker image.
 Can be extended to use with an existing project. Details will vbe added and further.
