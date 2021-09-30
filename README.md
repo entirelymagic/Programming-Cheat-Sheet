@@ -104,6 +104,8 @@
     - [4.5.1. Coverage](#451-coverage)
   - [4.6. Django 3.1 Async](#46-django-31-async)
   - [4.7. Using with Docker](#47-using-with-docker)
+  - [4.8. Models](#48-models)
+    - [4.8.1. Implementing rules to Django models](#481-implementing-rules-to-django-models)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -829,6 +831,12 @@ From the root of the directory:
 `ls -l`
 
 ![File list](Docker/list_dirs01.png)
+
+## 4.8. Models 
+
+### 4.8.1. Implementing rules to Django models
+
+* [Bullet Proofing Django Models](https://hakibenita.com/bullet-proofing-django-models)
 
 # 5. SQL
 
