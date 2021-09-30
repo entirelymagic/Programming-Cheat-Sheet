@@ -100,13 +100,15 @@
   - [4.2. Django Extensions](#42-django-extensions)
   - [4.3. Authentication](#43-authentication)
   - [4.4. User registration](#44-user-registration)
-  - [4.5. Views](#45-views)
-    - [4.5.1. API views](#451-api-views)
-      - [4.5.1.1. Redirect](#4511-redirect)
-  - [4.6. Django Testing](#46-django-testing)
-    - [4.6.1. Coverage](#461-coverage)
-  - [4.7. Django 3.1 Async](#47-django-31-async)
-  - [4.8. Using with Docker](#48-using-with-docker)
+  - [4.5. Models](#45-models)
+    - [4.5.1. Implementing rules to Django models](#451-implementing-rules-to-django-models)
+  - [4.6. Views](#46-views)
+    - [4.6.1. API views](#461-api-views)
+      - [4.6.1.1. Redirect](#4611-redirect)
+  - [4.7. Django Testing](#47-django-testing)
+    - [4.7.1. Coverage](#471-coverage)
+  - [4.8. Django 3.1 Async](#48-django-31-async)
+  - [4.9. Using with Docker](#49-using-with-docker)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -749,11 +751,16 @@ urlpatterns += [
 
 - There is now a user registration endpoint at  F[http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/](http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/).
 
-## 4.5. Views
+## 4.5. Models
 
-### 4.5.1. API views
+### 4.5.1. Implementing rules to Django models
 
-#### 4.5.1.1. Redirect
+* [Bullet Proofing Django Models](https://hakibenita.com/bullet-proofing-django-models)
+## 4.6. Views
+
+### 4.6.1. API views
+
+#### 4.6.1.1. Redirect
 
 ```python
 class ARedirectApiView(APIView):
@@ -775,9 +782,9 @@ class ARedirectApiView(APIView):
 
 ```
 
-## 4.6. Django Testing
+## 4.7. Django Testing
 
-### 4.6.1. Coverage
+### 4.7.1. Coverage
 
 > **Installation**
 
@@ -829,9 +836,9 @@ It will generate same source code file with an additional syntax on it:
 
 ```
 
-## 4.7. Django 3.1 Async
+## 4.8. Django 3.1 Async
 
-## 4.8. Using with Docker
+## 4.9. Using with Docker
 
 Here we will create a New django project inside a docker image.
 Can be extended to use with an existing project. Details will vbe added and further.
