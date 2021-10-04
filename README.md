@@ -100,14 +100,231 @@
   - [4.2. Django Extensions](#42-django-extensions)
   - [4.3. Authentication](#43-authentication)
   - [4.4. User registration](#44-user-registration)
-  - [4.5. Views](#45-views)
-    - [4.5.1. API views](#451-api-views)
-      - [4.5.1.1. Make a view accept single or multiple posts to database](#4511-make-a-view-accept-single-or-multiple-posts-to-database)
-      - [4.5.1.2. Redirect](#4512-redirect)
-  - [4.6. Django Testing](#46-django-testing)
-    - [4.6.1. Coverage](#461-coverage)
-  - [4.7. Django 3.1 Async](#47-django-31-async)
-  - [4.8. Using with Docker](#48-using-with-docker)
+  - [4.5. Models](#45-models)
+    - [4.5.1. Implementing rules to Django models](#451-implementing-rules-to-django-models)
+      - [4.5.1.1. Redirect](#4511-redirect)
+  - [4.6. Views](#46-views)
+    - [4.6.1. API views](#461-api-views)
+      - [4.6.1.1. Redirect](#4611-redirect)
+  - [4.7. Django Testing](#47-django-testing)
+    - [4.7.1. Coverage](#471-coverage)
+  - [4.8. Django 3.1 Async](#48-django-31-async)
+  - [4.9. Using with Docker](#49-using-with-docker)
+- [5. SQL](#5-sql)
+- [6. Web](#6-web)
+- [7. Operating Systems](#7-operating-systems)
+  - [7.1. Linux](#71-linux)
+    - [7.1.1. Files and Navigating](#711-files-and-navigating)
+      - [7.1.1.1. Directory listening](#7111-directory-listening)
+      - [7.1.1.2. Formatted listening](#7112-formatted-listening)
+      - [7.1.1.3. Formatted listening including hidden files](#7113-formatted-listening-including-hidden-files)
+      - [7.1.1.4. Change directory](#7114-change-directory)
+      - [7.1.1.5. Change to parent directory](#7115-change-to-parent-directory)
+      - [7.1.1.6. Show the path where actually you are](#7116-show-the-path-where-actually-you-are)
+      - [7.1.1.7. Create a directory](#7117-create-a-directory)
+      - [7.1.1.8. Remove directory](#7118-remove-directory)
+      - [7.1.1.9. Force remove](#7119-force-remove)
+      - [7.1.1.10. file](#71110-file)
+      - [7.1.1.11. Rename or move file](#71111-rename-or-move-file)
+      - [7.1.1.12. Create file](#71112-create-file)
+      - [7.1.1.13. Output contents of file](#71113-output-contents-of-file)
+      - [7.1.1.14. Write standard input into file](#71114-write-standard-input-into-file)
+      - [7.1.1.15. Append standard input into file](#71115-append-standard-input-into-file)
+      - [7.1.1.16. Output contents of file it grows](#71116-output-contents-of-file-it-grows)
+    - [7.1.2. Networking](#712-networking)
+      - [7.1.2.1. Ping host](#7121-ping-host)
+      - [7.1.2.2. Show the actually routing table](#7122-show-the-actually-routing-table)
+      - [7.1.2.3. Check your iptable's rules](#7123-check-your-iptables-rules)
+      - [7.1.2.4. List all ports](#7124-list-all-ports)
+      - [7.1.2.5. Got whois for domain](#7125-got-whois-for-domain)
+      - [7.1.2.6. Get DNS for domain](#7126-get-dns-for-domain)
+      - [7.1.2.7. Reserve lookup host](#7127-reserve-lookup-host)
+      - [7.1.2.8. Download file](#7128-download-file)
+      - [7.1.2.9. Recursively download files from url](#7129-recursively-download-files-from-url)
+      - [7.1.2.10. Outputs the webpage from url](#71210-outputs-the-webpage-from-url)
+      - [7.1.2.11. Connect to host as user](#71211-connect-to-host-as-user)
+      - [7.1.2.12. Connect using port](#71212-connect-using-port)
+      - [7.1.2.13. Connect and use bind port](#71213-connect-and-use-bind-port)
+    - [7.1.3. Processes](#713-processes)
+      - [7.1.3.1. Display currently active processes](#7131-display-currently-active-processes)
+      - [7.1.3.2. Detailed outputs](#7132-detailed-outputs)
+      - [7.1.3.3. Kill process with process id (pid)](#7133-kill-process-with-process-id-pid)
+      - [7.1.3.4. Kill all processes named proc](#7134-kill-all-processes-named-proc)
+    - [7.1.4. System Info](#714-system-info)
+      - [7.1.4.1. Show current date/time](#7141-show-current-datetime)
+      - [7.1.4.2. Show uptime](#7142-show-uptime)
+      - [7.1.4.3. Who you're logged in as](#7143-who-youre-logged-in-as)
+      - [7.1.4.4. Display who is online](#7144-display-who-is-online)
+      - [7.1.4.5. Memory info](#7145-memory-info)
+      - [7.1.4.6. Show memory and swap usage](#7146-show-memory-and-swap-usage)
+      - [7.1.4.7. Show directory space usage](#7147-show-directory-space-usage)
+      - [7.1.4.8. Displays readable size in GB](#7148-displays-readable-size-in-gb)
+      - [7.1.4.9. Show disk usage](#7149-show-disk-usage)
+      - [7.1.4.10. Show kernel config](#71410-show-kernel-config)
+    - [7.1.5. Compressing](#715-compressing)
+      - [7.1.5.1. Tar files into file.tar](#7151-tar-files-into-filetar)
+      - [7.1.5.2. Untar into current directory](#7152-untar-into-current-directory)
+      - [7.1.5.3. Show contents of archive](#7153-show-contents-of-archive)
+    - [7.1.6. Permissions](#716-permissions)
+      - [7.1.6.1. Change permissions of file](#7161-change-permissions-of-file)
+    - [7.1.7. Others](#717-others)
+      - [7.1.7.1. Search in files for pattern](#7171-search-in-files-for-pattern)
+      - [7.1.7.2. Search for pattern recursively in dir](#7172-search-for-pattern-recursively-in-dir)
+      - [7.1.7.3. Find all instances of file](#7173-find-all-instances-of-file)
+      - [7.1.7.4. Show possible locations of app](#7174-show-possible-locations-of-app)
+- [8. Editors](#8-editors)
+- [9. Docker](#9-docker)
+  - [9.1. Docker for Data Science](#91-docker-for-data-science)
+  - [9.2. Docker Cheat Sheet](#92-docker-cheat-sheet)
+    - [9.2.1. Create Containers without Starting](#921-create-containers-without-starting)
+    - [9.2.2. Start a Container](#922-start-a-container)
+    - [9.2.3. Inspect a Container](#923-inspect-a-container)
+    - [9.2.4. Container Names](#924-container-names)
+    - [9.2.5. Run Interactive command](#925-run-interactive-command)
+    - [9.2.6. Port Mapping](#926-port-mapping)
+    - [9.2.7. To stop all Docker containers, simply run the following command in your terminal](#927-to-stop-all-docker-containers-simply-run-the-following-command-in-your-terminal)
+    - [9.2.8. If you don’t just want to stop containers and you’d like to go a step further and remove them, simply run the following command](#928-if-you-dont-just-want-to-stop-containers-and-youd-like-to-go-a-step-further-and-remove-them-simply-run-the-following-command)
+    - [9.2.9. To remove all Docker images, run this command](#929-to-remove-all-docker-images-run-this-command)
+    - [9.2.10. Bind Mount Host Folders](#9210-bind-mount-host-folders)
+    - [9.2.11. List Containers](#9211-list-containers)
+    - [9.2.12. Run Container in Background or Detached](#9212-run-container-in-background-or-detached)
+    - [9.2.13. Attack to a Container](#9213-attack-to-a-container)
+    - [9.2.14. Environment Variables in Container](#9214-environment-variables-in-container)
+    - [9.2.15. Attach Commands in Running Container](#9215-attach-commands-in-running-container)
+    - [9.2.16. Pull a Image](#9216-pull-a-image)
+    - [9.2.17. Rename the image](#9217-rename-the-image)
+    - [9.2.18. Print Container Logs](#9218-print-container-logs)
+    - [9.2.19. Inspect Image Metadata](#9219-inspect-image-metadata)
+  - [9.3. Create a Docker Image with example](#93-create-a-docker-image-with-example)
+    - [9.3.1. DockerFile Format](#931-dockerfile-format)
+      - [9.3.1.1. Filesystem Modification Instructions](#9311-filesystem-modification-instructions)
+      - [9.3.1.2. Metadata Modification Instructions](#9312-metadata-modification-instructions)
+    - [9.3.2. Docker Build Command](#932-docker-build-command)
+    - [9.3.3. ARG instruction](#933-arg-instruction)
+    - [9.3.4. Copy instructions](#934-copy-instructions)
+      - [9.3.4.1. Copy and file ownership](#9341-copy-and-file-ownership)
+    - [9.3.5. RUN instruction](#935-run-instruction)
+    - [9.3.6. Volume Mount Points](#936-volume-mount-points)
+    - [9.3.7. Docker Hub Push Image to Registry](#937-docker-hub-push-image-to-registry)
+      - [9.3.7.1. Other Image Registries](#9371-other-image-registries)
+- [10. SQL](#10-sql)
+  - [10.1. POSGRESQL](#101-posgresql)
+    - [10.1.1. Update a table that have a column with a null value with a value](#1011-update-a-table-that-have-a-column-with-a-null-value-with-a-value)
+- [11. Resources](#11-resources)
+
+  - [4.5. Models](#45-models)
+    - [4.5.1. Implementing rules to Django models](#451-implementing-rules-to-django-models)
+  - [4.6. Views](#46-views)
+    - [4.6.1. API views](#461-api-views)
+      - [4.6.1.1. Redirect](#4611-redirect)
+  - [4.7. Django Testing](#47-django-testing)
+    - [4.7.1. Coverage](#471-coverage)
+  - [4.8. Django 3.1 Async](#48-django-31-async)
+  - [4.9. Using with Docker](#49-using-with-docker)
+
+- [1. General information](#1-general-information)
+  - [1.1. Create a VS Code Editor from web (press `.` o open when on main Repository page)](#11-create-a-vs-code-editor-from-web-press--o-open-when-on-main-repository-page)
+- [2. GIT](#2-git)
+  - [2.1. Cheat sheet](#21-cheat-sheet)
+    - [2.1.1. Local Changes](#211-local-changes)
+      - [2.1.1.1. Create a git patch from the uncommitted changes in the current working directory](#2111-create-a-git-patch-from-the-uncommitted-changes-in-the-current-working-directory)
+      - [2.1.1.2. Display the status of modified files](#2112-display-the-status-of-modified-files)
+      - [2.1.1.3. Add a file to staging as it looks right now](#2113-add-a-file-to-staging-as-it-looks-right-now)
+      - [2.1.1.4. Add a folder to staging as it looks right now](#2114-add-a-folder-to-staging-as-it-looks-right-now)
+      - [2.1.1.5. Commit staged files in a new commit](#2115-commit-staged-files-in-a-new-commit)
+      - [2.1.1.6. Add all files to staging and commit them at once](#2116-add-all-files-to-staging-and-commit-them-at-once)
+      - [2.1.1.7. Unstage a file while retaining the changes](#2117-unstage-a-file-while-retaining-the-changes)
+      - [2.1.1.8. Diff of what is changed but not staged](#2118-diff-of-what-is-changed-but-not-staged)
+      - [2.1.1.9. Diff of what has changed between staged changes and the last commit](#2119-diff-of-what-has-changed-between-staged-changes-and-the-last-commit)
+    - [2.1.2. Branches](#212-branches)
+      - [2.1.2.1. List all branches. The current one is marked with *](#2121-list-all-branches-the-current-one-is-marked-with-)
+      - [2.1.2.2. Create a new branch](#2122-create-a-new-branch)
+      - [2.1.2.3. Switch to a branch](#2123-switch-to-a-branch)
+      - [2.1.2.4. Create a new branch and switch to it](#2124-create-a-new-branch-and-switch-to-it)
+      - [2.1.2.5. Switch to the previously checked out branch](#2125-switch-to-the-previously-checked-out-branch)
+      - [2.1.2.6. Rename a branch](#2126-rename-a-branch)
+      - [2.1.2.7. Delete a branch, locally](#2127-delete-a-branch-locally)
+      - [2.1.2.8. Merge another branch into the current one](#2128-merge-another-branch-into-the-current-one)
+    - [2.1.3. Working with a Remote Repository](#213-working-with-a-remote-repository)
+      - [2.1.3.1. Fetch and merge all commits from the tracked remote branch](#2131-fetch-and-merge-all-commits-from-the-tracked-remote-branch)
+      - [2.1.3.2. Fetch and merge all commits from a specific remote branch](#2132-fetch-and-merge-all-commits-from-a-specific-remote-branch)
+      - [2.1.3.3. Fetch recent changes from the tracked remote branch but don't merge them](#2133-fetch-recent-changes-from-the-tracked-remote-branch-but-dont-merge-them)
+      - [2.1.3.4. Push all local branch commits to the tracked remote branch](#2134-push-all-local-branch-commits-to-the-tracked-remote-branch)
+      - [2.1.3.5. Push all local branch commits to a specific remote branch](#2135-push-all-local-branch-commits-to-a-specific-remote-branch)
+      - [2.1.3.6. Add a new remote repository with the given alias](#2136-add-a-new-remote-repository-with-the-given-alias)
+      - [2.1.3.7. Display a list of remote repositories and their URLs](#2137-display-a-list-of-remote-repositories-and-their-urls)
+    - [2.1.4. Commit History](#214-commit-history)
+      - [2.1.4.1. Show all commits in the current branch’s history](#2141-show-all-commits-in-the-current-branchs-history)
+      - [2.1.4.2. Show all commits in the current branch’s history by printing each commit on a single line](#2142-show-all-commits-in-the-current-branchs-history-by-printing-each-commit-on-a-single-line)
+      - [2.1.4.3. Show number of commits per author on all branches, excluding merge commits](#2143-show-number-of-commits-per-author-on-all-branches-excluding-merge-commits)
+      - [2.1.4.4. Show number of commits per author on a branch, excluding merge commits](#2144-show-number-of-commits-per-author-on-a-branch-excluding-merge-commits)
+      - [2.1.4.5. Show number of commits per author on all branches, including merge commits](#2145-show-number-of-commits-per-author-on-all-branches-including-merge-commits)
+      - [2.1.4.6. Show number of commits per author on a branch, including merge commits](#2146-show-number-of-commits-per-author-on-a-branch-including-merge-commits)
+    - [2.1.5. Rebase](#215-rebase)
+      - [2.1.5.1. Reapply commits from the current branch on top of another base](#2151-reapply-commits-from-the-current-branch-on-top-of-another-base)
+      - [2.1.5.2. Abort a rebase](#2152-abort-a-rebase)
+      - [2.1.5.3. Continue a rebase after resolving conflicts](#2153-continue-a-rebase-after-resolving-conflicts)
+    - [2.1.6. Undo](#216-undo)
+      - [2.1.6.1. Revert the changes in a commit and record them in a new commit](#2161-revert-the-changes-in-a-commit-and-record-them-in-a-new-commit)
+      - [2.1.6.2. Reset to a previous commit and preserve the changes made since [commit] as unstaged](#2162-reset-to-a-previous-commit-and-preserve-the-changes-made-since-commit-as-unstaged)
+      - [2.1.6.3. Reset to a previous commit and discard the changes made since the [commit]](#2163-reset-to-a-previous-commit-and-discard-the-changes-made-since-the-commit)
+    - [2.1.7. Stash](#217-stash)
+      - [2.1.7.1. Stash modified and staged changes](#2171-stash-modified-and-staged-changes)
+      - [2.1.7.2. Stash modified and staged changes with a custom message](#2172-stash-modified-and-staged-changes-with-a-custom-message)
+      - [2.1.7.3. Stash a selected file by specifying a path](#2173-stash-a-selected-file-by-specifying-a-path)
+      - [2.1.7.4. List all stashed changesets](#2174-list-all-stashed-changesets)
+      - [2.1.7.5. Restore the most recently stashed changeset and delete it](#2175-restore-the-most-recently-stashed-changeset-and-delete-it)
+      - [2.1.7.6. Delete the most recently stashed changeset](#2176-delete-the-most-recently-stashed-changeset)
+    - [2.1.8. Tags](#218-tags)
+      - [2.1.8.1. Create a new tag](#2181-create-a-new-tag)
+      - [2.1.8.2. List all tags](#2182-list-all-tags)
+      - [2.1.8.3. Delete a tag](#2183-delete-a-tag)
+    - [2.1.9. Repository Setup](#219-repository-setup)
+      - [2.1.9.1. Create an empty repository in the current folder](#2191-create-an-empty-repository-in-the-current-folder)
+      - [2.1.9.2. Create an empty repository in a specific folder](#2192-create-an-empty-repository-in-a-specific-folder)
+      - [2.1.9.3. Clone a repository and add it to the current folder](#2193-clone-a-repository-and-add-it-to-the-current-folder)
+      - [2.1.9.4. Clone a repository to a specific folder](#2194-clone-a-repository-to-a-specific-folder)
+    - [2.1.10. Global Config](#2110-global-config)
+      - [2.1.10.1. Set the username](#21101-set-the-username)
+      - [2.1.10.2. Set the user email](#21102-set-the-user-email)
+      - [2.1.10.3. Set automatic command line coloring](#21103-set-automatic-command-line-coloring)
+  - [2.2. RE-clone](#22-re-clone)
+  - [2.3. Clean and reset](#23-clean-and-reset)
+  - [2.4. Clean](#24-clean)
+  - [2.5. Reset](#25-reset)
+  - [2.6. Update local branch after main branch was renamed](#26-update-local-branch-after-main-branch-was-renamed)
+- [3. Python](#3-python)
+  - [3.1. Cheat Sheets](#31-cheat-sheets)
+  - [3.2. Data Types](#32-data-types)
+    - [3.2.1. Text Type: `str`](#321-text-type-str)
+    - [3.2.2. Numeric Types: `int`, `float`, `complex`](#322-numeric-types-int-float-complex)
+    - [3.2.3. Sequence Types: `list`, `tuple`, `range`](#323-sequence-types-list-tuple-range)
+      - [3.2.3.1. List](#3231-list)
+        - [3.2.3.1.1. Transform a nested list into a simple list](#32311-transform-a-nested-list-into-a-simple-list)
+    - [3.2.4. Mapping Type: `dict`](#324-mapping-type-dict)
+    - [3.2.5. Set Types: `set`, `frozenset`](#325-set-types-set-frozenset)
+    - [3.2.6. Boolean Type: `bool`](#326-boolean-type-bool)
+    - [3.2.7. Binary Types: `bytes`, `bytearray`, `memoryview`](#327-binary-types-bytes-bytearray-memoryview)
+  - [3.3. Useful Functions](#33-useful-functions)
+    - [3.3.1. EAN generators](#331-ean-generators)
+    - [3.3.2. 3.2.2 XLSX Generators](#332-322-xlsx-generators)
+  - [3.4. Asynchronous Python](#34-asynchronous-python)
+    - [3.4.1. Asynchronous Web Socket Class](#341-asynchronous-web-socket-class)
+- [4. Django](#4-django)
+  - [4.1. Cheat Sheet](#41-cheat-sheet)
+  - [4.2. Django Extensions](#42-django-extensions)
+  - [4.3. Authentication](#43-authentication)
+  - [4.4. User registration](#44-user-registration)
+  - [4.5. Models](#45-models)
+    - [4.5.1. Implementing rules to Django models](#451-implementing-rules-to-django-models)
+      - [4.5.1.1. Redirect](#4511-redirect)
+  - [4.6. Views](#46-views)
+    - [4.6.1. API views](#461-api-views)
+      - [4.6.1.1. Redirect](#4611-redirect)
+  - [4.7. Django Testing](#47-django-testing)
+    - [4.7.1. Coverage](#471-coverage)
+  - [4.8. Django 3.1 Async](#48-django-31-async)
+  - [4.9. Using with Docker](#49-using-with-docker)
 - [5. SQL](#5-sql)
 - [6. Web](#6-web)
 - [7. Operating Systems](#7-operating-systems)
@@ -750,36 +967,21 @@ urlpatterns += [
 
 - There is now a user registration endpoint at  F[http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/](http://127.0.0.1:8000/api/v1/dj-rest-auth/registration/).
 
-## 4.5. Views
+## 4.5. Models
 
-### 4.5.1. API views
+### 4.5.1. Implementing rules to Django models
 
-#### 4.5.1.1. Make a view accept single or multiple posts to database
+#### 4.5.1.1. Redirect
 
-   This is an example for a view that accepts single(dict) or multiple(list of dict) post to the database.
+=======
 
-  ```python
-  class ProductViewset(viewsets.ModelViewSet):
-    """Product Viewset
-    API endpoint that allows products to be edited.
-    Allowed actions:
-        "POST", "PUT"
-    """
+- [Bullet Proofing Django Models](https://hakibenita.com/bullet-proofing-django-models)
 
-    queryset = models.Product.objects.all()
-    serializer_class = serializers.ProductSerializer
-    http_method_names = ['post', 'put']
-    
-    # Method that allow multiple or single product to be posted on database
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data, many=isinstance(request.data,list))
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-  ```
+## 4.6. Views
 
-#### 4.5.1.2. Redirect
+### 4.6.1. API views
+
+#### 4.6.1.1. Redirect
 
 ```python
 class ARedirectApiView(APIView):
@@ -801,9 +1003,9 @@ class ARedirectApiView(APIView):
 
 ```
 
-## 4.6. Django Testing
+## 4.7. Django Testing
 
-### 4.6.1. Coverage
+### 4.7.1. Coverage
 
 > **Installation**
 
@@ -855,9 +1057,9 @@ It will generate same source code file with an additional syntax on it:
 
 ```
 
-## 4.7. Django 3.1 Async
+## 4.8. Django 3.1 Async
 
-## 4.8. Using with Docker
+## 4.9. Using with Docker
 
 Here we will create a New django project inside a docker image.
 Can be extended to use with an existing project. Details will vbe added and further.
