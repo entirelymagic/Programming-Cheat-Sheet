@@ -106,6 +106,7 @@
   - [4.6. Views](#46-views)
     - [4.6.1. API views](#461-api-views)
       - [4.6.1.1. Redirect](#4611-redirect)
+      - [4.6.1.2. Make a view accept single or multiple posts to database](#4612-make-a-view-accept-single-or-multiple-posts-to-database)
   - [4.7. Django Testing](#47-django-testing)
     - [4.7.1. Coverage](#471-coverage)
   - [4.8. Django 3.1 Async](#48-django-31-async)
@@ -321,6 +322,7 @@
   - [4.6. Views](#46-views)
     - [4.6.1. API views](#461-api-views)
       - [4.6.1.1. Redirect](#4611-redirect)
+      - [4.6.1.2. Make a view accept single or multiple posts to database](#4612-make-a-view-accept-single-or-multiple-posts-to-database)
   - [4.7. Django Testing](#47-django-testing)
     - [4.7.1. Coverage](#471-coverage)
   - [4.8. Django 3.1 Async](#48-django-31-async)
@@ -1002,6 +1004,31 @@ class ARedirectApiView(APIView):
    
 
 ```
+
+#### 4.6.1.2. Make a view accept single or multiple posts to database
+
+   This is an example for a view that accepts single(dict) or multiple(list of dict) post to the database.
+
+  ```python
+  class ProductViewset(viewsets.ModelViewSet):
+    """Product Viewset
+    API endpoint that allows products to be edited.
+    Allowed actions:
+        "POST", "PUT"
+    """
+
+    queryset = models.Product.objects.all()
+    serializer_class = serializers.ProductSerializer
+    http_method_names = ['post', 'put']
+    
+    # Method that allow multiple or single product to be posted on database
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data, many=isinstance(request.data,list))
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+  ```
 
 ## 4.7. Django Testing
 
