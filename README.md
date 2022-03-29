@@ -78,6 +78,8 @@
   - [2.4. Clean](#24-clean)
   - [2.5. Reset](#25-reset)
   - [2.6. Update local branch after main branch was renamed](#26-update-local-branch-after-main-branch-was-renamed)
+  - [2.7 Git LFS (Large File Storage)](#27-git-lfs-large-file-storage)
+    - [Include in the current project files from the previews pushes of files that became larger then 100MB](#include-in-the-current-project-files-from-the-previews-pushes-of-files-that-became-larger-then-100mb)
 - [3. Python](#3-python)
   - [3.1. Cheat Sheets](#31-cheat-sheets)
   - [3.2. Data Types](#32-data-types)
@@ -294,6 +296,8 @@
   - [2.4. Clean](#24-clean)
   - [2.5. Reset](#25-reset)
   - [2.6. Update local branch after main branch was renamed](#26-update-local-branch-after-main-branch-was-renamed)
+  - [2.7 Git LFS (Large File Storage)](#27-git-lfs-large-file-storage)
+    - [Include in the current project files from the previews pushes of files that became larger then 100MB](#include-in-the-current-project-files-from-the-previews-pushes-of-files-that-became-larger-then-100mb)
 - [3. Python](#3-python)
   - [3.1. Cheat Sheets](#31-cheat-sheets)
   - [3.2. Data Types](#32-data-types)
@@ -747,11 +751,20 @@ git branch -u origin/develop develop
 git remote set-head origin -a
 ```
 
+## 2.7 Git LFS (Large File Storage)
+
+Documentation: <https://git-lfs.github.com/>
+
+### Include in the current project files from the previews pushes of files that became larger then 100MB
+
+This will include all csv files
+> git lfs migrate import --include="*.csv"
+
 # 3. Python
 
 ## 3.1. Cheat Sheets
 
-<a href="/Python/python_cheat_sheet.pdf">Beginners Python Cheat Sheet</a>
+Link to the cheatsheet: <href="/Python/python_cheat_sheet.pdf">Beginners Python Cheat Sheet</a>
 
 ## 3.2. Data Types
 
